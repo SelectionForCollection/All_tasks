@@ -2,17 +2,103 @@
 #include <fstream>
 #include <cmath>
 #include <windows.h>
+#include <string>
+
 using namespace std;
 
+//Функция проверки.
+int Cin(long min, long max) {
+	long a;
+	//Проверяем рациональность числа и ввод лишних символов 
+	while (!(cin >> a) || (cin.peek() != '\n')) {
+		cin.clear();
+		while (cin.get() != '\n');
+		cout << "Явно присутствуют некорректные для данного типа символы. Проверьте корректность." << endl;
+	}
+
+	//Исключение нуля
+	if (a == 0) {
+		cout << "Введите число отличное от нуля" << endl;
+		a = Cin(min, max);
+	}
+	//Верхний предел
+	if (a > max) {
+		cout << "Число выходит за промежуток. По условию a =< " << max << " и а >= " << min << endl;
+		a = Cin(min, max);
+	}
+	//Нижний Предел
+	if (a < min) {
+		cout << "Число выходит за промежуток. По условию a =< " << max << " и а >= " << min << endl;
+		a = Cin(min, max);
+	}
+	//Исключение отрицательных чисел
+	if (a < 0) {
+		cout << "Вы ввели (" << a << ") Возьмем все-таки положительное, то есть " << abs(a) << endl;
+		a = abs(a);
+	}
+
+	return a;
+}
+//Функция проверки, пропускающая ноль
+int CIN(long min, long max) {
+	long a;
+	//Проверяем рациональность числа и ввод лишних символов 
+	while (!(cin >> a) || (cin.peek() != '\n')) {
+		cin.clear();
+		while (cin.get() != '\n');
+		cout << "Явно присутствуют некорректные для данного типа символы. Проверьте корректность." << endl;
+	}
+
+	//Верхний предел
+	if (a > max) {
+		cout << "Число выходит за промежуток. По условию a =< " << max << " и а >= " << min << endl;
+		a = Cin(min, max);
+	}
+	//Нижний Предел
+	if (a < min) {
+		cout << "Число выходит за промежуток. По условию a =< " << max << " и а >= " << min << endl;
+		a = Cin(min, max);
+	}
+	//Исключение отрицательных чисел
+	if (a < 0) {
+		cout << "Вы ввели (" << a << ") Возьмем все-таки положительное, то есть " << abs(a) << endl;
+		a = abs(a);
+	}
+
+	return a;
+}
+//Функция проверки пропускающая ноль и отрицательные числа.
+int CIn(long min, long max) {
+	long a;
+	//Проверяем рациональность числа и ввод лишних символов 
+	while (!(cin >> a) || (cin.peek() != '\n')) {
+		cin.clear();
+		while (cin.get() != '\n');
+		cout << "Явно присутствуют некорректные для данного типа символы. Проверьте корректность." << endl;
+	}
+
+	//Верхний предел
+	if (a > max) {
+		cout << "Число выходит за промежуток. По условию a =< " << max << " и а >= " << min << endl;
+		a = Cin(min, max);
+	}
+	//Нижний Предел
+	if (a < min) {
+		cout << "Число выходит за промежуток. По условию a =< " << max << " и а >= " << min << endl;
+		a = Cin(min, max);
+	}
+
+	return a;
+}
+
 int main1() {
-	cout << endl;
-	setlocale(LC_ALL, "rus");
+	cout << endl; cin.clear(); cin.ignore();
 	int x, m, p = 0, s; string b;
 	fstream file;
 	file.open("D:\\дз по ПП\\Домашнее задание 4\\Файл для 1-й задачи.txt");
 	for (int z = 0; z < 10; z++) {
-		cout << "Введите число номер " << z+1 << endl;
-		cin >> x;
+		cout << "Введите число номер " << z + 1;
+		x = Cin(-2147483647, 2147483647);
 		p = p + x;
 		file << x << " ";
 	}
@@ -21,78 +107,48 @@ int main1() {
 	string str(istreambuf_iterator<char>(file), istreambuf_iterator<char>());
 	cout << "Сумма равна " << p << endl;
 	file.close();
-	cout << "Начать заново - 1\nВыход в меню - любая клавиша" << endl;
-	cin >> s;
-	switch (s) {
-	case 1:
-		main1();
-		break;
-	default:
-		break;
-	}
+	cout << endl; cin.clear(); cin.ignore();
 	return 0;
 }
-
 int main2() {
-	cout << endl;
-	setlocale(LC_ALL, "rus");
+	cout << endl; cin.clear(); cin.ignore();
 	int x, s;
-	cout << "Введите Х" << endl;
-	cin >> x;
+	cout << "Введите Х: "; x = CIn(-2147483647, 2147483647);
 	if (x > 0) cout << "Число положительное" << endl;
 	if (x == 0)cout << "Число равное нулю" << endl;
 	if (x < 0)cout << "Число отрицательное" << endl;
-	cout << "Начать заново - 1\nВыход в меню - любая клавиша" << endl;
-	cin >> s;
-	switch (s) {
-	case 1:
-		main2();
-		break;
-	default:
-		break;
-	}
+	cout << endl; cin.clear(); cin.ignore();
 	return 0;
 }
-
 int ra() {
 	setlocale(LC_ALL, "rus");
 	float a, b;
-	cout << "Сторона a - "; cin >> a; while (cin.fail()) { cout << "Уупс. ошибка. Вводите цифры" << endl; char fail; cin.clear(); cin >> fail; cin >> a; }
-	cout << "Сторона b - "; cin >> b; while (cin.fail()) { cout << "Уупс. ошибка. Вводите цифры" << endl; char fail; cin.clear(); cin >> fail; cin >> b; }
-	if ((a == 0) || (b == 0)) {
-		cout << "Измерения не могут быть равны 0" << endl;
-	}
-	else {
-		cout << "Площадь прямоугольника равна " << abs(a * b) << '\n';
-	}
+	cout << "Сторона a - "; a = Cin(-2147483647, 2147483647);
+	cout << "Сторона b - "; b = Cin(-2147483647, 2147483647);
+	cout << "Площадь прямоугольника равна " << abs(a * b) << '\n';
 	return 0;
 }
 int ta() {
 	setlocale(LC_ALL, "rus");
 	float a, h;
-	cout << "Основание - "; cin >> a; while (cin.fail()) { cout << "Уупс. ошибка. Вводите цифры" << endl; char fail; cin.clear(); cin >> fail; cin >> a; }
-	cout << "Высота - "; cin >> h; while (cin.fail()) { cout << "Уупс. ошибка. Вводите цифры" << endl; char fail; cin.clear(); cin >> fail; cin >> h; }
-	if ((a == 0) || (h == 0)) {
-		cout << "Измерения не могут быть равны 0" << endl;
-	}
-	else {
-		cout << "Площадь тругольника равна " << abs((a * h) / 2) << '\n';
-	}
+	cout << "Основание - "; a = Cin(-2147483647, 2147483647);
+	cout << "Высота - "; h = Cin(-2147483647, 2147483647);
+	cout << "Площадь тругольника равна " << abs((a * h) / 2) << '\n';
+
 	return 0;
 }
 int ci() {
 	setlocale(LC_ALL, "rus");
 	double r;
-	cout << "Радиус - "; cin >> r; while (cin.fail()) { cout << "Уупс. ошибка. Вводите цифры" << endl; char fail; cin.clear(); cin >> fail; cin >> r; }
+	cout << "Радиус - "; r = Cin(-2147483647, 2147483647);
 	cout << "Площадь круга равна " << pow(r, 2) << "pi" << '\n';
 	return 0;
 }
 int main3() {
-	cout << endl;
-	setlocale(LC_ALL, "rus");
+	cout << endl; cin.clear(); cin.ignore();
 	int s, n;
 	cout << "Выберите фигуру \n 1 - Прямоугольник \n 2 - Тругольник \n 3 - Круг \nФигура - ";
-	cin >> s;
+	s = Cin(0,3);
 	switch (s) {
 	case 1:
 		ra();
@@ -103,25 +159,12 @@ int main3() {
 	case 3:
 		ci();
 		break;
-	default:
-		cout << "Вводите корректный номер" << endl;
-		main3();
-		break;
 	}
-	cout << "Начать заново - 1\nВыход в меню - любая клавиша" << endl;
-	cin >> s;
-	switch (s) {
-	case 1:
-		main3();
-		break;
-	default:
-		break;
-	}
+	cout << endl; cin.clear(); cin.ignore();
 	return 0;
 }
-
 int main4() {
-	cout << endl;
+	cout << endl; cin.clear(); cin.ignore();
 	int s;
 	for (int i = 0; i < 49; i++)
 		cout << "_";
@@ -132,19 +175,11 @@ int main4() {
 	}
 	for (int i = 0; i < 7; i++)
 		cout << "| _______________________________________________ |\n";
-	cout << "Начать заново - 1\nВыход в меню - любая клавиша" << endl;
-	cin >> s;
-	switch (s) {
-	case 1:
-		main4();
-		break;
-	default:
-		break;
-	}
+	cout << endl; cin.clear(); cin.ignore();
 	return 0;
 }
-
 int main5() {
+	cout << endl; cin.clear(); cin.ignore();
 	int s;
 	HWND hwnd = GetConsoleWindow();
 	HDC hdc = GetDC(hwnd);
@@ -152,39 +187,27 @@ int main5() {
 	system("cls");
 
 	int x = 0;
-	for (float i = 0; i < 3.14 * 1000; i += 0.05)
-	{
+	for (float i = 0; i < 3.14 * 1000; i += 0.05) {
 		SetPixel(hdc, x, 50 + 25 * cos(i), RGB(255, 255, 255));
 		x += 1;
 	}
 
 	ReleaseDC(hwnd, hdc);
-	cin.ignore();
-	cout << "Начать заново - 1\nВыход в меню - любая клавиша" << endl;
-	cin >> s;
-	switch (s) {
-	case 1:
-		main5();
-		break;
-	default:
-		break;
-	}
+	cin.clear(); cin.ignore();
+
 	return 0;
 }
-
 int main6() {
-	cout << endl;
-	setlocale(LC_ALL, "Russian");
+	cout << endl; cin.clear(); cin.ignore();
 	string s, w; int a; int res;
 	res = 0;
-	cin >> s;
+	cout << "Введите строку: "; getline(cin, s);
 
 	for (int i = 0; i <= s.size(); i++) {
 		if ((s[i] != 'I') & (s[i] != 'i') & (s[i] != 'V') & (s[i] != 'v') & (s[i] != 'X') & (s[i] != 'x') & (s[i] != 'L') & (s[i] != 'l') & (s[i] != 'C') & (s[i] != 'c') & (s[i] != 'D') & (s[i] != 'd') & (s[i] != 'M') & (s[i] != 'm')) {
 			s[i] = ' ';
 		}
 	}
-
 
 	for (int i = 0; i <= s.size(); i++) {
 		if (s[i] = ' ') {
@@ -494,22 +517,10 @@ int main6() {
 		}
 	}
 
-
 	cout << res << endl;
-
-	cout << "Начать заново - 1\nВыход в меню - любая клавиша" << endl;
-	cin >> a;
-	switch (a) {
-	case 1:
-		main6();
-		break;
-	default:
-		break;
-	}
 
 	return 0;
 }
-
 int var1() {
 	setlocale(LC_ALL, "Russian");
 	int n, m, i, c, s;
@@ -544,10 +555,9 @@ int var2() {
 }
 int main7() {
 	cout << endl;
-	setlocale(LC_ALL, "Russian");
-	int s, S;
+	int s;
 	cout << "Выберете вариант генерации \n I вариант - 1 \n II вариант - 2\n Выход из программы -3\nВариант - ";
-	cin >> s; cout << endl;
+	s = Cin(0,3); cout << endl;
 	switch (s) {
 	case 1:
 		var1();
@@ -557,37 +567,23 @@ int main7() {
 		break;
 	case 3:
 		break;
-	default:
-		cout << "Попробуйте еще раз. Вводите только 1,2 или 3." << endl;
-		main7();
-		break;
 	}
-	cout << "Начать заново - 1\nВыход в меню - любая клавиша" << endl;
-	cin >> S;
-	switch (S) {
-	case 1:
-		main7();
-		break;
-	default:
-		break;
-	}
+	cout << endl;
 	return 0;
 }
-
 int main8() {
 	cout << endl;
-	setlocale(LC_ALL, "rus");
 	int row1, row2, col1, col2;
 	double** a, ** b, ** c;
 
 	cout << "Введите количество строк первой матрицы: ";
-	cin >> row1;
+	row1 = Cin(-2147483647, 2147483647);
 	cout << "Введите количество столбцов первой матрицы: ";
-	cin >> col1;
+	col1 = Cin(-2147483647, 2147483647);
 	cout << "Введите количество строк второй матрицы: ";
-	cin >> row2;
+	row2 = Cin(-2147483647, 2147483647);
 	cout << "Введите количество столбцов второй матрицы: ";
-	cin >> col2;
+	col2 = Cin(-2147483647, 2147483647);
 	if (col1 != row2)
 	{
 		cout << "Умножение невозможно!";
@@ -601,7 +597,7 @@ int main8() {
 		a[i] = new double[col1];
 		for (int j = 1; j <= col1; j++) {
 			cout << "a[" << i << "][" << j << "]= ";
-			cin >> a[i][j];
+			a[i][j] = Cin(-2147483647, 2147483647);
 		}
 	}
 	// Вывод первой матрицы
@@ -614,20 +610,16 @@ int main8() {
 	// Ввод второй матрицы
 	b = new double* [row2];
 	cout << "Введите элементы второй матрицы" << endl;
-	for (int i = 1; i <= row2; i++)
-	{
+	for (int i = 1; i <= row2; i++) {
 		b[i] = new double[col2];
-		for (int j = 1; j <= col2; j++)
-		{
+		for (int j = 1; j <= col2; j++) {
 			cout << "b[" << i << "][" << j << "]= ";
-			cin >> b[i][j];
+			b[i][j] = CIn(-2147483647, 2147483647);
 		}
 	}
 	// Вывод второй матрицы
-	for (int i = 1; i <= row2; i++)
-	{
-		for (int j = 1; j <= col2; j++)
-		{
+	for (int i = 1; i <= row2; i++) {
+		for (int j = 1; j <= col2; j++) {
 			cout << b[i][j] << " ";
 		}
 		cout << endl;
@@ -651,37 +643,22 @@ int main8() {
 			cout << c[i][j] << " ";
 		cout << endl;
 	}
+	cout << endl;
+	cout << "Для матрицы получившейся в результате перемножения матриц из условия:"<< endl;
+	cout << "  Продавец получивший наибольшую выручку - 2. Наименьшую - 1" << endl;
+	cout << "  Продавец c наибольшими коммисионными - 1. Наименьшие - 3" << endl;
+	cout << "  Общая вырученная сумма равна " << 31.1 + 37.1 + 23.5 << endl;
+	cout << "  Всего коммисионных " << 18.3 + 13 + 10 << endl;
+	cout << "  Всего денег " << 31.6 + 37.6 + 24 << endl;
 
-	cout << "Продавец получивший наибольшую выручку - 2. Наименьшую - 1" << endl;
-	cout << "Продавец c наибольшими коммисионными - 1. Наименьшие - 3" << endl;
-	cout << "Общая вырученная сумма равна " << 31.1 + 37.1 + 23.5 << endl;
-	cout << "Всего коммисионных " << 18.3 + 13 + 10 << endl;
-	cout << "Всего денег " << 31.6 + 37.6 + 24 << endl;
-
-
-
-
-	// cin.get(); cin.get();
-	int s;
-	cout << "Начать заново - 1\nВыход в меню - любая клавиша" << endl;
-	cin >> s;
-	switch (s) {
-	case 1:
-		main8();
-		break;
-	default:
-		break;
-	}
 	return 0;
 }
-
 char symbol(int num) {
 	char out[] = { '0','1','2','3','4','5','6','7','8','9',
 	'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P',
 	'Q','R','S','T','U','V','W','X','Y','Z' };
 	return out[num];
 }
-
 void other(int num, int nov) {
 	if (num < nov) {
 		cout << symbol(num);
@@ -690,14 +667,13 @@ void other(int num, int nov) {
 	other(num / nov, nov);
 	cout << symbol(num % nov);
 }
-
 int main9() {
-	setlocale(LC_ALL, "rus");
+	cout << endl;
 	int num = 0, star, nov, in = 0, flag = 0;
-	string chislo1, drob;
-	cout << "Введите число" << endl; cin >> chislo1;
-	cout << "Введите старое основание" << endl; cin >> star;
-	cout << "Введите новое основание" << endl; cin >> nov;
+	string chislo1;
+	cout << "Введите число: "; chislo1 = CIN(-2147483647, 2147483647);
+	cout << "Введите старое основание: "; star = Cin(0,36);
+	cout << "Введите новое основание: "; nov = Cin(0,36);
 
 	reverse(chislo1.begin(), chislo1.end());
 
@@ -745,57 +721,252 @@ int main9() {
 	}
 	if (flag < star) {
 		cout << "В десятичной системе счисления это " << num << endl;
+		cout << endl;
 		cout << "В " << nov << "-ричной системе счисления это будет ";
 		other(num, nov); cout << endl;
 	}
 	else {
 		cout << "Ошибка: исходное число является некорректной записью для системы с основанием " << star << endl;
 	}
-
+	cout << endl;
 	return 0;
 }
-
-int main() {
+void week4() {
 	cout << endl;
-	setlocale(LC_ALL, "rus");
 	int s;
-	cout << "Введите № задания:\n 1 - 'ФАЙЛ'\n 2 - 'ЗНАК ЧИСЛА'\n 3 - 'ГЕОМЕТРИЧЕСКИЕ ФИГУРЫ'\n 4 - 'БЫЛАЯ СЛАВА'\n 5 - 'СИНУСОИДА'\n 6 - 'АВТОМАТНЫЙ РАСПОЗНОВАТЕЛЬ'\n 7 - 'ГЕНЕРАТОР ПСЕВДОСЛУЧАЙНЫХ ЧИСЕЛ'\n 8 - 'УМНОЖЕНИЕ МАТРИЦ'\n 9 - 'СИСТЕМЫ СЧИСЛЕНИЯ'\n 0 - Завершение программы\nНомер -  ";
-	cin >> s;
+	cout << "Введите № задания:\n 1 - 'ФАЙЛ'\n 2 - 'ЗНАК ЧИСЛА'\n 3 - 'ГЕОМЕТРИЧЕСКИЕ ФИГУРЫ'\n 4 - 'БЫЛАЯ СЛАВА'\n 5 - 'СИНУСОИДА'\n 6 - 'АВТОМАТНЫЙ РАСПОЗНОВАТЕЛЬ'\n 7 - 'ГЕНЕРАТОР ПСЕВДОСЛУЧАЙНЫХ ЧИСЕЛ'\n 8 - 'УМНОЖЕНИЕ МАТРИЦ'\n 9 - 'СИСТЕМЫ СЧИСЛЕНИЯ'\n 0 - Подняться на уровень выше\nНомер -  ";
+	s = CIN(0,9);
 	switch (s) {
 	case 0:
 		break;
 	case 1:
 		main1();
+		week4();
 		break;
 	case 2:
 		main2();
+		week4();
 		break;
 	case 3:
 		main3();
+		week4();
 		break;
 	case 4:
 		main4();
+		week4();
 		break;
 	case 5:
 		main5();
+		week4();
 		break;
 	case 6:
 		main6();
+		week4();
 		break;
 	case 7:
 		main7();
+		week4();
 		break;
 	case 8:
 		main8();
+		week4();
 		break;
 	case 9:
 		main9();
+		week4();
 		break;
 	default:
 		cout << endl;
 		cout << "Вводите корректный номер" << endl;
+		week4();
+		break;
+	}
+}
+void stupid(int* a, int n) {
+	int i = 0;
+	while (i < n - 1) {
+		if (a[i + 1] < a[i]) {
+			swap(a[i], a[i + 1]);
+			i = 0;
+		}
+		else
+			i++;
+	}
+}
+int Stupid_main() {
+	cout << endl;
+	int n;
+
+	cout << "N = ";
+	n = Cin(0, 2147483647);
+
+	int* arr = new int[n];
+
+	for (int i = 1; i <= n; i++) {
+		cout << "Введите "<<i <<"-й элемент: ";
+		arr[i] = CIn(-2147483647, 2147483647);
+	}
+
+	stupid(arr, n);
+
+	for (int i = 1; i <= n; i++) {
+		cout << arr[i] << " ";
+	}
+	cout << endl;
+	return 0;
+}
+string O1() {
+	cout << endl;
+	string str;
+	char d;
+
+	cin.clear(); cin.ignore();
+
+	cout << "Введите строку: "; getline(cin, str);
+	cout << endl;
+	cout << "Введите символ замены: "; cin >> d;
+
+	for (int i = 1; i <= str.length(); i++) {
+		if (str[i] == ' ') {
+			str[i] = d;
+			i--;
+		}
+	}
+
+	cout << str << endl;
+	return str;
+}
+string O2() {
+	cout << endl;
+	string st;
+	char ds;
+	int t;
+
+	cin.clear(); cin.ignore();
+
+	cout << "Введите строку: "; getline(cin, st);
+	cout << endl;
+	cout << "Хотите удалить пробел?\n 1 - да\n 2 - нет\nНомер - "; t = Cin(0,2); cout << endl;
+	if (t == 1) {
+		for (int i = 0; i <= st.length(); i++) {
+			if (st[i] == ' ') {
+				st.erase(i, 1);
+				i--;
+			}
+		}
+	}
+	else {
+		cout << "Введите символ, который надо удалить: "; cin >> ds; cout << endl;
+		cout << "Сохранить пробел?\n 1 - да\n 2 - нет\nНомер - "; t = Cin(0,2); cout << endl;
+		if (t == 1) {
+			for (int i = 0; i <= st.length(); i++) {
+				if (st[i] == ds) {
+					st.erase(i, 1);
+					i--;
+				}
+			}
+		}
+		else {
+			for (int i = 0; i <= st.length(); i++) {
+				if ((st[i] == ' ') or (st[i] == ds)) {
+					st.erase(i, 1);
+					i--;
+				}
+			}
+		}
+	}
+
+	cout << st << endl;
+	return st;
+}
+string O3() {
+	cout << endl;
+
+	int m; bool flag = true;
+	string s;
+	char dst;
+
+	cin.clear(); cin.ignore();
+	cout << "Введите строку: "; getline(cin, s); cout << endl;
+
+	for (int i = 0; i <= s.length(); i++) {
+		if (s[i] == ' ') {
+			s[i] = '\n';
+		}
+	}
+
+	cout << s << endl;
+	return s;
+}
+void Obrabotka() {
+	cout << endl;
+	SetConsoleOutputCP(1251);
+	SetConsoleCP(1251);
+
+	cout << "Введите № задания:\n 1 - 'Замена пробелов определенным символом'\n 2 - 'Удаление определенного символа'\n 3 - 'Преобразование строки в столбец'\n 0 - Подняться на уровень выше\nНомер - 	";
+	int s; s = CIN(0, 3);
+
+	switch (s) {
+	case 0:
+		break;
+	case 1:
+		O1();
+		Obrabotka();
+		break;
+	case 2:
+		O2();
+		Obrabotka();
+		break;
+	case 3:
+		O3();
+		Obrabotka();
+		break;
+	default:
+		break;
+	}
+}
+int main() {
+	cout << endl;
+	SetConsoleOutputCP(1251);
+	SetConsoleCP(1251);
+	int s;
+	cout << "Введите № задания:\n 1 - '1-я неделя'\n 2 - '2-я неделя'\n 3 - '3-я неделя'\n 4 - '4-я неделя'\n 5 - 'Спиннеры'\n 6 - 'Алгоритм Евклида'\n 7 - 'Решето Эратосфена'\n 8 - 'Stupid Sort'\n 9 - 'Задача про Шарики'\n 10 - 'Обработка'\n0 - Завершение программы\nНомер -  ";
+	s = CIN(0,10);
+	switch (s) {
+	case 0:
+		break;
+	case 1:
+
+		break;
+	case 2:
+		
+		break;
+	case 3:
+		
+		break;
+	case 4:
+		week4();
+		main();
+		break;
+	case 5:
+		
+		break;
+	case 6:
+		
+		break;
+	case 7:
+		
+		break;
+	case 8:
+		Stupid_main();
+		main();
+		break;
+	case 9:
+		
+		break;
+	case 10:
+		Obrabotka();
 		main();
 		break;
 	}
-	return 0;
 }

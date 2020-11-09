@@ -1,0 +1,801 @@
+#include <iostream>
+#include <fstream>
+#include <cmath>
+#include <windows.h>
+using namespace std;
+
+int main1() {
+	cout << endl;
+	setlocale(LC_ALL, "rus");
+	int x, m, p = 0, s; string b;
+	fstream file;
+	file.open("D:\\дз по ПП\\Домашнее задание 4\\Файл для 1-й задачи.txt");
+	for (int z = 0; z < 10; z++) {
+		cout << "Введите число номер " << z+1 << endl;
+		cin >> x;
+		p = p + x;
+		file << x << " ";
+	}
+	file.close();
+	file.open("D:\\дз по ПП\\Домашнее задание 4\\Файл для 1-й задачи.txt");
+	string str(istreambuf_iterator<char>(file), istreambuf_iterator<char>());
+	cout << "Сумма равна " << p << endl;
+	file.close();
+	cout << "Начать заново - 1\nВыход в меню - любая клавиша" << endl;
+	cin >> s;
+	switch (s) {
+	case 1:
+		main1();
+		break;
+	default:
+		break;
+	}
+	return 0;
+}
+
+int main2() {
+	cout << endl;
+	setlocale(LC_ALL, "rus");
+	int x, s;
+	cout << "Введите Х" << endl;
+	cin >> x;
+	if (x > 0) cout << "Число положительное" << endl;
+	if (x == 0)cout << "Число равное нулю" << endl;
+	if (x < 0)cout << "Число отрицательное" << endl;
+	cout << "Начать заново - 1\nВыход в меню - любая клавиша" << endl;
+	cin >> s;
+	switch (s) {
+	case 1:
+		main2();
+		break;
+	default:
+		break;
+	}
+	return 0;
+}
+
+int ra() {
+	setlocale(LC_ALL, "rus");
+	float a, b;
+	cout << "Сторона a - "; cin >> a; while (cin.fail()) { cout << "Уупс. ошибка. Вводите цифры" << endl; char fail; cin.clear(); cin >> fail; cin >> a; }
+	cout << "Сторона b - "; cin >> b; while (cin.fail()) { cout << "Уупс. ошибка. Вводите цифры" << endl; char fail; cin.clear(); cin >> fail; cin >> b; }
+	if ((a == 0) || (b == 0)) {
+		cout << "Измерения не могут быть равны 0" << endl;
+	}
+	else {
+		cout << "Площадь прямоугольника равна " << abs(a * b) << '\n';
+	}
+	return 0;
+}
+int ta() {
+	setlocale(LC_ALL, "rus");
+	float a, h;
+	cout << "Основание - "; cin >> a; while (cin.fail()) { cout << "Уупс. ошибка. Вводите цифры" << endl; char fail; cin.clear(); cin >> fail; cin >> a; }
+	cout << "Высота - "; cin >> h; while (cin.fail()) { cout << "Уупс. ошибка. Вводите цифры" << endl; char fail; cin.clear(); cin >> fail; cin >> h; }
+	if ((a == 0) || (h == 0)) {
+		cout << "Измерения не могут быть равны 0" << endl;
+	}
+	else {
+		cout << "Площадь тругольника равна " << abs((a * h) / 2) << '\n';
+	}
+	return 0;
+}
+int ci() {
+	setlocale(LC_ALL, "rus");
+	double r;
+	cout << "Радиус - "; cin >> r; while (cin.fail()) { cout << "Уупс. ошибка. Вводите цифры" << endl; char fail; cin.clear(); cin >> fail; cin >> r; }
+	cout << "Площадь круга равна " << pow(r, 2) << "pi" << '\n';
+	return 0;
+}
+int main3() {
+	cout << endl;
+	setlocale(LC_ALL, "rus");
+	int s, n;
+	cout << "Выберите фигуру \n 1 - Прямоугольник \n 2 - Тругольник \n 3 - Круг \nФигура - ";
+	cin >> s;
+	switch (s) {
+	case 1:
+		ra();
+		break;
+	case 2:
+		ta();
+		break;
+	case 3:
+		ci();
+		break;
+	default:
+		cout << "Вводите корректный номер" << endl;
+		main3();
+		break;
+	}
+	cout << "Начать заново - 1\nВыход в меню - любая клавиша" << endl;
+	cin >> s;
+	switch (s) {
+	case 1:
+		main3();
+		break;
+	default:
+		break;
+	}
+	return 0;
+}
+
+int main4() {
+	cout << endl;
+	int s;
+	for (int i = 0; i < 49; i++)
+		cout << "_";
+	cout << "\n";
+	for (int n = 0; n < 6; n++) {
+		cout << "| * * * * * * * *________________________________ |";
+		cout << '\n';
+	}
+	for (int i = 0; i < 7; i++)
+		cout << "| _______________________________________________ |\n";
+	cout << "Начать заново - 1\nВыход в меню - любая клавиша" << endl;
+	cin >> s;
+	switch (s) {
+	case 1:
+		main4();
+		break;
+	default:
+		break;
+	}
+	return 0;
+}
+
+int main5() {
+	int s;
+	HWND hwnd = GetConsoleWindow();
+	HDC hdc = GetDC(hwnd);
+
+	system("cls");
+
+	int x = 0;
+	for (float i = 0; i < 3.14 * 1000; i += 0.05)
+	{
+		SetPixel(hdc, x, 50 + 25 * cos(i), RGB(255, 255, 255));
+		x += 1;
+	}
+
+	ReleaseDC(hwnd, hdc);
+	cin.ignore();
+	cout << "Начать заново - 1\nВыход в меню - любая клавиша" << endl;
+	cin >> s;
+	switch (s) {
+	case 1:
+		main5();
+		break;
+	default:
+		break;
+	}
+	return 0;
+}
+
+int main6() {
+	cout << endl;
+	setlocale(LC_ALL, "Russian");
+	string s, w; int a; int res;
+	res = 0;
+	cin >> s;
+
+	for (int i = 0; i <= s.size(); i++) {
+		if ((s[i] != 'I') & (s[i] != 'i') & (s[i] != 'V') & (s[i] != 'v') & (s[i] != 'X') & (s[i] != 'x') & (s[i] != 'L') & (s[i] != 'l') & (s[i] != 'C') & (s[i] != 'c') & (s[i] != 'D') & (s[i] != 'd') & (s[i] != 'M') & (s[i] != 'm')) {
+			s[i] = ' ';
+		}
+	}
+
+
+	for (int i = 0; i <= s.size(); i++) {
+		if (s[i] = ' ') {
+			s.erase(i, 1);
+		}
+	}
+
+	cout << s << endl;
+
+	for (int t = 0; t <= s.size(); t++) {
+		for (int z = 0; z < s.size(); z++) {
+			if (s[z] == ' ') {
+				swap(s[z], s[z + 1]);
+			}
+			else {
+				if (s[z] == 'i') {
+					s[z] = 'I';
+				}
+				else {
+					if (s[z] == 'v') {
+						s[z] = 'V';
+					}
+					else {
+						if (s[z] == 'x') {
+							s[z] = 'X';
+						}
+						else {
+							if (s[z] == 'l') {
+								s[z] = 'L';
+							}
+							else {
+								if (s[z] == 'c') {
+									s[z] = 'C';
+								}
+								else {
+									if (s[z] == 'd') {
+										s[z] = 'D';
+									}
+									else {
+										if (s[z] == 'm') {
+											s[z] = 'M';
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	cout << s << endl;
+
+	if (s[0] == 'I') res = 1;
+	if (s[0] == 'V') res = 5;
+	if (s[0] == 'X') res = 10;
+	if (s[0] == 'L') res = 50;
+	if (s[0] == 'C') res = 100;
+	if (s[0] == 'D') res = 500;
+	if (s[0] == 'M') res = 1000;
+
+	for (int y = 0; y < s.size(); y++) {
+		//------------------------------------------------------------Для единицы(I)
+		if ((s[y] == 'I') & (s[y + 1] == 'I')) {
+			res = res + 1;
+		}
+		else {
+			if ((s[y] == 'I') & (s[y + 1] == 'V')) {
+				res = 5 - res;
+			}
+			else {
+				if ((s[y] == 'I') & (s[y + 1] == 'X')) {
+					res = 10 - res;
+				}
+				else {
+					if ((s[y] == 'I') & (s[y + 1] == 'L')) {
+						res = 50 - res;
+					}
+					else {
+						if ((s[y] == 'I') & (s[y + 1] == 'C')) {
+							res = 100 - res;
+						}
+						else {
+							if ((s[y] == 'I') & (s[y + 1] == 'D')) {
+								res = 500 - res;
+							}
+							else {
+								if ((s[y] == 'I') & (s[y + 1] == 'M')) {
+									res = 1000 - res;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		//------------------------------------------------------------Для пятерки(V)
+		if ((s[y] == 'V') & (s[y + 1] == 'I')) {
+			res = res + 1;
+		}
+		else {
+			if ((s[y] == 'V') & (s[y + 1] == 'V')) {
+				res = 5 + res;
+			}
+			else {
+				if ((s[y] == 'V') & (s[y + 1] == 'X')) {
+					res = 10 - res;
+				}
+				else {
+					if ((s[y] == 'V') & (s[y + 1] == 'L')) {
+						res = 50 - res;
+					}
+					else {
+						if ((s[y] == 'V') & (s[y + 1] == 'C')) {
+							res = 100 - res;
+						}
+						else {
+							if ((s[y] == 'V') & (s[y + 1] == 'D')) {
+								res = 500 - res;
+							}
+							else {
+								if ((s[y] == 'V') & (s[y + 1] == 'M')) {
+									res = 1000 - res;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		//------------------------------------------------------------Для десяти(Х)
+		if ((s[y] == 'X') & (s[y + 1] == 'I')) {
+			res = res + 1;
+		}
+		else {
+			if ((s[y] == 'X') & (s[y + 1] == 'V')) {
+				res = 5 + res;
+			}
+			else {
+				if ((s[y] == 'X') & (s[y + 1] == 'X')) {
+					res = 10 + res;
+				}
+				else {
+					if ((s[y] == 'X') & (s[y + 1] == 'L')) {
+						res = 50 - res;
+					}
+					else {
+						if ((s[y] == 'X') & (s[y + 1] == 'C')) {
+							res = 100 - res;
+						}
+						else {
+							if ((s[y] == 'X') & (s[y + 1] == 'D')) {
+								res = 500 - res;
+							}
+							else {
+								if ((s[y] == 'X') & (s[y + 1] == 'M')) {
+									res = 1000 - res;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		//------------------------------------------------------------Для пятидесяти(L)
+		if ((s[y] == 'L') & (s[y + 1] == 'I')) {
+			res = res + 1;
+		}
+		else {
+			if ((s[y] == 'L') & (s[y + 1] == 'V')) {
+				res = 5 + res;
+			}
+			else {
+				if ((s[y] == 'L') & (s[y + 1] == 'X')) {
+					res = 10 + res;
+				}
+				else {
+					if ((s[y] == 'L') & (s[y + 1] == 'L')) {
+						res = 50 + res;
+					}
+					else {
+						if ((s[y] == 'L') & (s[y + 1] == 'C')) {
+							res = 100 - res;
+						}
+						else {
+							if ((s[y] == 'L') & (s[y + 1] == 'D')) {
+								res = 500 - res;
+							}
+							else {
+								if ((s[y] == 'L') & (s[y + 1] == 'M')) {
+									res = 1000 - res;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		//------------------------------------------------------------Для cта(C)
+		if ((s[y] == 'C') & (s[y + 1] == 'I')) {
+			res = res + 1;
+		}
+		else {
+			if ((s[y] == 'C') & (s[y + 1] == 'V')) {
+				res = 5 + res;
+			}
+			else {
+				if ((s[y] == 'C') & (s[y + 1] == 'X')) {
+					res = 10 + res;
+				}
+				else {
+					if ((s[y] == 'C') & (s[y + 1] == 'L')) {
+						res = 50 - res;
+					}
+					else {
+						if ((s[y] == 'C') & (s[y + 1] == 'C')) {
+							res = 100 + res;
+						}
+						else {
+							if ((s[y] == 'C') & (s[y + 1] == 'D')) {
+								res = 500 - res;
+							}
+							else {
+								if ((s[y] == 'C') & (s[y + 1] == 'M')) {
+									res = 1000 - res;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		//------------------------------------------------------------Для пятиста(D)
+		if ((s[y] == 'D') & (s[y + 1] == 'I')) {
+			res = res + 1;
+		}
+		else {
+			if ((s[y] == 'D') & (s[y + 1] == 'V')) {
+				res = 5 + res;
+			}
+			else {
+				if ((s[y] == 'D') & (s[y + 1] == 'X')) {
+					res = 10 + res;
+				}
+				else {
+					if ((s[y] == 'D') & (s[y + 1] == 'L')) {
+						res = 50 - res;
+					}
+					else {
+						if ((s[y] == 'D') & (s[y + 1] == 'C')) {
+							res = 100 - res;
+						}
+						else {
+							if ((s[y] == 'D') & (s[y + 1] == 'D')) {
+								res = 500 + res;
+							}
+							else {
+								if ((s[y] == 'D') & (s[y + 1] == 'M')) {
+									res = 1000 - res;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		//------------------------------------------------------------Для тысячи(M)
+		if ((s[y] == 'M') & (s[y + 1] == 'I')) {
+			res = res + 1;
+		}
+		else {
+			if ((s[y] == 'M') & (s[y + 1] == 'V')) {
+				res = 5 + res;
+			}
+			else {
+				if ((s[y] == 'M') & (s[y + 1] == 'X')) {
+					res = 10 + res;
+				}
+				else {
+					if ((s[y] == 'M') & (s[y + 1] == 'L')) {
+						res = 50 - res;
+					}
+					else {
+						if ((s[y] == 'M') & (s[y + 1] == 'C')) {
+							res = 100 - res;
+						}
+						else {
+							if ((s[y] == 'M') & (s[y + 1] == 'D')) {
+								res = 500 - res;
+							}
+							else {
+								if ((s[y] == 'M') & (s[y + 1] == 'M')) {
+									res = 1000 + res;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+
+	cout << res << endl;
+
+	cout << "Начать заново - 1\nВыход в меню - любая клавиша" << endl;
+	cin >> a;
+	switch (a) {
+	case 1:
+		main6();
+		break;
+	default:
+		break;
+	}
+
+	return 0;
+}
+
+int var1() {
+	setlocale(LC_ALL, "Russian");
+	int n, m, i, c, s;
+	m = 37;
+	i = 3;
+	c = 64;
+	cout << "Введите количество чисел" << endl;
+	cin >> n;
+	s = (rand() * 13 - 65) % 2;
+	for (int k = 1; k <= n; k++)
+	{
+		s = (m * s + i) % c;
+		cout << s << endl;
+	}
+	return 0;
+}
+int var2() {
+	setlocale(LC_ALL, "Russian");
+	int n, m, i, c, s;
+	m = 25173;
+	i = 13849;
+	c = 65537;
+	cout << "Введите количество чисел" << endl;
+	cin >> n;
+	s = (rand() * 13 - 65) % 2;
+	for (int k = 1; k <= n; k++)
+	{
+		s = (m * s + i) % c;
+		cout << s << endl;
+	}
+	return 0;
+}
+int main7() {
+	cout << endl;
+	setlocale(LC_ALL, "Russian");
+	int s, S;
+	cout << "Выберете вариант генерации \n I вариант - 1 \n II вариант - 2\n Выход из программы -3\nВариант - ";
+	cin >> s; cout << endl;
+	switch (s) {
+	case 1:
+		var1();
+		break;
+	case 2:
+		var2();
+		break;
+	case 3:
+		break;
+	default:
+		cout << "Попробуйте еще раз. Вводите только 1,2 или 3." << endl;
+		main7();
+		break;
+	}
+	cout << "Начать заново - 1\nВыход в меню - любая клавиша" << endl;
+	cin >> S;
+	switch (S) {
+	case 1:
+		main7();
+		break;
+	default:
+		break;
+	}
+	return 0;
+}
+
+int main8() {
+	cout << endl;
+	setlocale(LC_ALL, "rus");
+	int row1, row2, col1, col2;
+	double** a, ** b, ** c;
+
+	cout << "Введите количество строк первой матрицы: ";
+	cin >> row1;
+	cout << "Введите количество столбцов первой матрицы: ";
+	cin >> col1;
+	cout << "Введите количество строк второй матрицы: ";
+	cin >> row2;
+	cout << "Введите количество столбцов второй матрицы: ";
+	cin >> col2;
+	if (col1 != row2)
+	{
+		cout << "Умножение невозможно!";
+		cin.get(); cin.get();
+		return 0;
+	}
+	// Ввод первой матрицы
+	a = new double* [row1];
+	cout << "Введите элементы первой матрицы" << endl;
+	for (int i = 1; i <= row1; i++) {
+		a[i] = new double[col1];
+		for (int j = 1; j <= col1; j++) {
+			cout << "a[" << i << "][" << j << "]= ";
+			cin >> a[i][j];
+		}
+	}
+	// Вывод первой матрицы
+	for (int i = 1; i <= row1; i++)
+	{
+		for (int j = 1; j <= col1; j++)
+			cout << a[i][j] << " ";
+		cout << endl;
+	}
+	// Ввод второй матрицы
+	b = new double* [row2];
+	cout << "Введите элементы второй матрицы" << endl;
+	for (int i = 1; i <= row2; i++)
+	{
+		b[i] = new double[col2];
+		for (int j = 1; j <= col2; j++)
+		{
+			cout << "b[" << i << "][" << j << "]= ";
+			cin >> b[i][j];
+		}
+	}
+	// Вывод второй матрицы
+	for (int i = 1; i <= row2; i++)
+	{
+		for (int j = 1; j <= col2; j++)
+		{
+			cout << b[i][j] << " ";
+		}
+		cout << endl;
+	}
+	// Умножение 
+	c = new double* [row1];
+	for (int i = 1; i <= row1; i++)
+	{
+		c[i] = new double[col2];
+		for (int j = 1; j <= col2; j++)
+		{
+			c[i][j] = 0;
+			for (int k = 1; k <= col1; k++)
+				c[i][j] += a[i][k] * b[k][j];
+		}
+	}
+	// Вывод произведения
+	cout << "Матрица произведения" << endl;
+	for (int i = 1; i <= row1; i++) {
+		for (int j = 1; j <= col2; j++)
+			cout << c[i][j] << " ";
+		cout << endl;
+	}
+
+	cout << "Продавец получивший наибольшую выручку - 2. Наименьшую - 1" << endl;
+	cout << "Продавец c наибольшими коммисионными - 1. Наименьшие - 3" << endl;
+	cout << "Общая вырученная сумма равна " << 31.1 + 37.1 + 23.5 << endl;
+	cout << "Всего коммисионных " << 18.3 + 13 + 10 << endl;
+	cout << "Всего денег " << 31.6 + 37.6 + 24 << endl;
+
+
+
+
+	// cin.get(); cin.get();
+	int s;
+	cout << "Начать заново - 1\nВыход в меню - любая клавиша" << endl;
+	cin >> s;
+	switch (s) {
+	case 1:
+		main8();
+		break;
+	default:
+		break;
+	}
+	return 0;
+}
+
+char symbol(int num) {
+	char out[] = { '0','1','2','3','4','5','6','7','8','9',
+	'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P',
+	'Q','R','S','T','U','V','W','X','Y','Z' };
+	return out[num];
+}
+
+void other(int num, int nov) {
+	if (num < nov) {
+		cout << symbol(num);
+		return;
+	}
+	other(num / nov, nov);
+	cout << symbol(num % nov);
+}
+
+int main9() {
+	setlocale(LC_ALL, "rus");
+	int num = 0, star, nov, in = 0, flag = 0;
+	string chislo1, drob;
+	cout << "Введите число" << endl; cin >> chislo1;
+	cout << "Введите старое основание" << endl; cin >> star;
+	cout << "Введите новое основание" << endl; cin >> nov;
+
+	reverse(chislo1.begin(), chislo1.end());
+
+	for (int i = (chislo1.length() - 1); i >= 0; i--) {
+		if (chislo1[i] == '0') in = 0;
+		if (chislo1[i] == '1') in = 1;
+		if (chislo1[i] == '2') in = 2;
+		if (chislo1[i] == '3') in = 3;
+		if (chislo1[i] == '4') in = 4;
+		if (chislo1[i] == '5') in = 5;
+		if (chislo1[i] == '6') in = 6;
+		if (chislo1[i] == '7') in = 7;
+		if (chislo1[i] == '8') in = 8;
+		if (chislo1[i] == '9') in = 9;
+		if (chislo1[i] == 'a') in = 10;
+		if (chislo1[i] == 'b') in = 11;
+		if (chislo1[i] == 'c') in = 12;
+		if (chislo1[i] == 'd') in = 13;
+		if (chislo1[i] == 'e') in = 14;
+		if (chislo1[i] == 'f') in = 15;
+		if (chislo1[i] == 'g') in = 16;
+		if (chislo1[i] == 'h') in = 17;
+		if (chislo1[i] == 'i') in = 18;
+		if (chislo1[i] == 'j') in = 19;
+		if (chislo1[i] == 'k') in = 20;
+		if (chislo1[i] == 'l') in = 21;
+		if (chislo1[i] == 'm') in = 22;
+		if (chislo1[i] == 'n') in = 23;
+		if (chislo1[i] == 'o') in = 24;
+		if (chislo1[i] == 'p') in = 25;
+		if (chislo1[i] == 'q') in = 26;
+		if (chislo1[i] == 'r') in = 27;
+		if (chislo1[i] == 's') in = 28;
+		if (chislo1[i] == 't') in = 29;
+		if (chislo1[i] == 'u') in = 30;
+		if (chislo1[i] == 'v') in = 31;
+		if (chislo1[i] == 'w') in = 32;
+		if (chislo1[i] == 'x') in = 33;
+		if (chislo1[i] == 'y') in = 34;
+		if (chislo1[i] == 'z') in = 35;
+
+		if (in > flag) flag = in;
+
+		num = num + (in * pow(star, i));
+	}
+	if (flag < star) {
+		cout << "В десятичной системе счисления это " << num << endl;
+		cout << "В " << nov << "-ричной системе счисления это будет ";
+		other(num, nov); cout << endl;
+	}
+	else {
+		cout << "Ошибка: исходное число является некорректной записью для системы с основанием " << star << endl;
+	}
+
+	return 0;
+}
+
+int main() {
+	cout << endl;
+	setlocale(LC_ALL, "rus");
+	int s;
+	cout << "Введите № задания:\n 1 - 'ФАЙЛ'\n 2 - 'ЗНАК ЧИСЛА'\n 3 - 'ГЕОМЕТРИЧЕСКИЕ ФИГУРЫ'\n 4 - 'БЫЛАЯ СЛАВА'\n 5 - 'СИНУСОИДА'\n 6 - 'АВТОМАТНЫЙ РАСПОЗНОВАТЕЛЬ'\n 7 - 'ГЕНЕРАТОР ПСЕВДОСЛУЧАЙНЫХ ЧИСЕЛ'\n 8 - 'УМНОЖЕНИЕ МАТРИЦ'\n 9 - 'СИСТЕМЫ СЧИСЛЕНИЯ'\n 0 - Завершение программы\nНомер -  ";
+	cin >> s;
+	switch (s) {
+	case 0:
+		break;
+	case 1:
+		main1();
+		break;
+	case 2:
+		main2();
+		break;
+	case 3:
+		main3();
+		break;
+	case 4:
+		main4();
+		break;
+	case 5:
+		main5();
+		break;
+	case 6:
+		main6();
+		break;
+	case 7:
+		main7();
+		break;
+	case 8:
+		main8();
+		break;
+	case 9:
+		main9();
+		break;
+	default:
+		cout << endl;
+		cout << "Вводите корректный номер" << endl;
+		main();
+		break;
+	}
+	return 0;
+}

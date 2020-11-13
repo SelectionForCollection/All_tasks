@@ -1,8 +1,11 @@
 #include <iostream>
+#include <cstdlib>
+#include <string>
 #include <fstream>
+#include <streambuf>
+#include <set>
 #include <cmath>
 #include <windows.h>
-#include <string>
 
 using namespace std;
 
@@ -91,7 +94,359 @@ int CIn(long min, long max) {
 	return a;
 }
 
-int main1() {
+string w1() {
+	cout << endl;
+	string x;
+	cout << "Введите имя: "; cin >> x;
+	cout << x << endl;
+	return x;
+}
+float w2() {
+	cout << endl;
+	long long x, y;
+	cout << "Введите первое число: "; x = CIn(-2147483647, 2147483647);
+	cout << "Введите второе число: "; y = CIn(-2147483647, 2147483647);
+	if (y == 0) {
+		cout << "Сумма : ";
+		cout << x + y << endl;
+		cout << "Разность : ";
+		cout << x - y << endl;
+		cout << "Умножение : ";
+		cout << x * y << endl;
+		cout << "Деление : ";
+		cout << "Делить на ноль нельзя" << endl;
+	}
+	else {
+		cout << "Сумма: ";
+		cout << x + y << endl;
+		cout << "Разность: ";
+		cout << x - y << endl;
+		cout << "Умножение: ";
+		cout << x * y << endl;
+		cout << "Деление: ";
+		cout << x / y << endl;
+	}
+	return 0;
+}
+float w3() {
+	cout << endl;
+	float b, c;
+	cout << "Введите b: "; b = CIn(-2147483647, 2147483647);
+	cout << "Введите с: "; c = CIn(-2147483647, 2147483647);
+	if ((b == 0) & (c == 0)) {
+		cout << "x = Любое число" << endl;
+	}
+	else {
+		if ((b == 0) & (c != 0)) {
+			cout << "x = undefined" << endl;
+		}
+		else {
+			cout << "x = " << (-c) / (b) << endl;
+		}
+	}
+	return 0;
+}
+float w4() {
+	cout << endl;
+	int a, b, c, d;
+	cout << "Введите коэффициент при x^2: "; a = CIn(-2147483647, 2147483647);
+	cout << "Введите коэффициент при х: "; b = CIn(-2147483647, 2147483647);
+	cout << "Введите свободный коэффициент: "; c = CIn(-2147483647, 2147483647);
+	d = (b * b) - (4 * a * c);
+	if (d >= 0) {
+
+		if (a == 0) {
+			if ((b == 0) & (c == 0)) {
+				cout << "x = Любое число" << endl;
+			}
+			else {
+				if ((b == 0) & (c != 0)) {
+					cout << "x = undefined" << endl;
+				}
+				else {
+					cout << "x = " << (-c) / (b) << endl;
+				}
+			}
+		}
+		else {
+			if ((a == 1) & (b != 0) & (c != 0)) {
+				cout << "По теореме Виета:" << endl;
+				cout << "X1 равен " << ((-b) + sqrt(d)) / (2 * a) << endl;
+				cout << "Х2 равен " << ((-b) - sqrt(d)) / (2 * a) << endl;
+			}
+			else {
+				if ((b == 0) & (c != 0)) {
+					if (c > 0) {
+						cout << "Квадрат не может быть равен отрицательному числу " << endl;
+					}
+					else {
+						cout << "X равен +/-" << sqrt((-c) / a) << endl;
+					}
+				}
+				else {
+					cout << "X1 равен " << ((-b) + sqrt(d)) / (2 * a) << endl;
+					cout << "Х2 равен " << ((-b) - sqrt(d)) / (2 * a) << endl;
+				}
+			}
+		}
+	}
+	else {
+		cout << "Дискриминант меньше нуля " << endl;
+	}
+	return 0;
+}
+float w5() {
+	cout << endl;
+	int l, sh, d;
+	cout << "Горит ли лампа?\n 1- да\n 0- нет\nНомер - "; l = CIN(0,1);
+	cout << "Открыты ли шторы?\n 1- да\n 0- нет\nНомер - "; sh = CIN(0, 1);
+	cout << "Сейчас день?\n 1- да\n 0- нет\nНомер - "; d = CIN(0,1);
+
+		if ((l == 1) || ((sh == 1) & (d == 1))) {
+			cout << "В комнате светло" << endl;
+		}
+		else {
+			cout << "В комнате темно " << endl;
+		}
+
+	return 0;
+}
+void Week1() {
+	cout << endl;
+	int s;
+	cout << "Введите № задания:\n 1 - 'ИМЯ'\n 2 - 'АРИФМЕТИКА'\n 3 - 'УРАВНЕНИЕ'\n 4 - 'ЕЩЕ ОДНО УРАВНЕНИЕ'\n 5 - 'ЛАМПА'\n0 - Подняться на уровень выше\nНомер -  ";
+	s = CIN(0,5);
+	switch (s) {
+	case 0:
+		break;
+	case 1:
+		w1();
+		Week1();
+		break;
+	case 2:
+		w2();
+		Week1();
+		break;
+	case 3:
+		w3();
+		Week1();
+		break;
+	case 4:
+		w4();
+		Week1();
+		break;
+	case 5:
+		w5();
+		Week1();
+		break;
+	}
+}
+
+int we1() {
+	cout << endl;
+	long long R, r, l, h, s;
+	cout << "Ведите радиус большего основания: "; R = Cin(-2147483647,2147483647);
+	cout << "Ведите радиус меньшего основания: "; r = Cin(-2147483647,2147483647);
+	cout << "Введите образующую: "; l = Cin(INT_MIN,INT_MAX);
+	cout << "Введите высоту: "; h = Cin(INT_MIN, INT_MAX);
+	if (l < h) {
+		cout << "Образующая не может быть меньше высоты" << endl;
+	}
+	else {
+		if (r == R) {
+			cout << "Это цилиндр" << endl;
+		}
+		else {
+			cout << "Объем равен " << abs((h * (pow(R, 2) + R * r + pow(r, 2)) / 3)) << "*pi" << endl;
+			cout << "Площадь полной поверхности равна " << abs(pow(R, 2) + (R + r) * l + pow(r, 2)) << "*pi" << endl;
+		}
+	}
+	return 0;
+}
+float we2() {
+	cout << endl;
+	float x, a;
+	cout << "Введите х: "; x = CIn(INT_MIN,INT_MAX);
+	cout << "Введите а: "; a = CIn(INT_MIN,INT_MAX);
+	if ((x != 0) & (a >= pow(x, 2))) {
+		if (sqrt(pow(x, 2)) < 1) {
+			cout << "w = " << a * log(sqrt(pow(x, 2))) << endl;
+		}
+		else {
+			cout << "w = " << sqrt(a - x * x) << endl;
+		}
+	}
+	else {
+		cout << "Не подходит по ОДЗ" << endl;
+	}
+	return 0;
+}
+float we3() {
+	cout << endl;
+	float x, y, b;
+	cout << "Введите x: "; x = CIn(INT_MIN, INT_MAX);
+	cout << "Введите y: "; y = CIn(INT_MIN, INT_MAX);
+	cout << "Введите b: "; b = CIn(INT_MIN, INT_MAX);
+
+	if (((b - x) >= 0) & ((b - y) > 0)) {
+		cout << "z= " << log(b - y) * sqrt(b - x) << endl;
+	}
+	else {
+		cout << "Не подходит по ОДЗ. Попробуйте еще раз." << endl;
+	}
+
+	return 0;
+}
+float we4() {
+	cout << endl;
+	int N;
+	cout << "Введите границу: "; N = CIn(INT_MIN, INT_MAX);
+	if (N >= 2147483637) {
+		for (int u = N; u < 2147483647; u++) {
+			cout << u + 1 << endl;
+		}
+	}
+	else {
+		for (int i = N; i < (N + 10); i++) {
+			cout << i + 1 << endl;
+		}
+	}
+	return 0;
+}
+float we5() {
+	cout << endl;
+	float x;
+	for (x = -4; x <= 4; x = x + 0.5) {
+		if ((x - 1) == 0) {
+			cout << "Деление на ноль" << endl;
+		}
+		else {
+			cout << (x * x - 2 * x + 2) / (x - 1) << endl;
+		}
+	}
+
+	return 0;
+}
+void Week2() {
+	cout << endl;
+	int s;
+	cout << "Введите № задания:\n 1 - 'КОНУС'\n 2 - 'РАЗВЕТВЛЕНИЯ'\n 3 - 'ФУНКЦИЯ'\n 4 - 'ПОРЯДОК'\n 5 - 'ТАБУЛЯЦИЯ'\n0 - Подняться на уровень выше\nНомер -  ";
+	s = CIN(0, 5);
+	switch (s) {
+	case 0:
+		break;
+	case 1:
+		we1();
+		Week2();
+		break;
+	case 2:
+		we2();
+		Week2();
+		break;
+	case 3:
+		we3();
+		Week2();
+		break;
+	case 4:
+		we4();
+		Week2();
+		break;
+	case 5:
+		we5();
+		Week2();
+		break;
+	}
+}
+
+float wee1() {
+	cout << endl;
+	long double s, p, n;
+	cout << "S = "; s = Cin(INT_MIN, INT_MAX);
+	cout << "p = "; p = Cin(INT_MIN, 100);
+	cout << "n = "; n = Cin(1, INT_MAX);
+	if (pow(1 + p / 100, n) == 1) {
+		cout << "Деление на ноль. Проверьте корректность. " << endl;
+	}
+	else{
+		cout << "m = " << (s * (p / 100) * pow(1 + (p / 100), n)) / (12 * (pow(1 + (p / 100), n) - 1)) << endl;
+	}
+	return 0;
+}
+float wee2() {
+	cout << endl;
+	long double s, m, n;
+	cout << "Введите сумму заема(в рублях)\nS = "; s = Cin(INT_MIN, INT_MAX);
+	cout << "Введите количество лет(в годах)\nn = "; n = Cin(1, INT_MAX);
+	cout << "Введите месячную выплату(в рублях)\nm = "; m = Cin(INT_MIN, INT_MAX);
+	cout << "Процент равен " << ((pow(((m * 12 * n) / s), 1 / n) - 1) * 100) << endl;
+	return 0;
+}
+float wee3() {
+	cout << endl;
+
+	cout << ifstream("D:\\дз по ПП\\Домашнее задание 3\\Текстовый документ.txt").rdbuf() << endl;
+
+	return 0;
+}
+float wee4() {
+	cout << endl;
+	int b;
+	ifstream file("D:\\дз по ПП\\Домашнее задание 3\\Текстовый документ.txt");
+	string str((istreambuf_iterator<char>(file)), istreambuf_iterator<char>());
+	cout << str << endl;
+	cout << endl;
+	for (int i = 0; i < str.size(); i++) {
+		if (isdigit(str[i])) {
+			b = str[i] - '0';
+			cout << b << " ";
+		}
+	}
+	return 0;
+}
+float wee5() {
+	cout << endl; cin.clear(); cin.ignore();
+	multiset<char> str;
+	int n = 30; string s; char temp;
+	cout << "Вводите строку: "; getline(cin, s);
+	for (int i = s.length(); i >= 0; i--) {
+		str.insert(s[i]);
+	}
+	for (auto c : str) cout << c;
+	return 0;
+}
+void Week3() {
+	cout << endl; cin.clear(); cin.ignore();
+	int s;
+	cout << "Введите № задания:\n 1 - 'ЗАЕМ'\n 2 - 'ССУДА'\n 3 - 'КОПИРОВАНИЕ ФАЙЛА'\n 4 - 'ФИЛЬТР'\n 5 - 'СОРТИРОВКА БУКВ'\n 0 - Подняться на уровень выше\nНомер -  ";
+	s = CIN(0, 5);
+	switch (s) {
+	case 0:
+		break;
+	case 1:
+		wee1();
+		Week3();
+		break;
+	case 2:
+		wee2();
+		Week3();
+		break;
+	case 3:
+		wee3();
+		Week3();
+		break;
+	case 4:
+		wee4();
+		Week3();
+		break;
+	case 5:
+		wee5();
+		Week3();
+		break;
+	}
+
+}
+
+int week1() {
 	cout << endl; cin.clear(); cin.ignore();
 	int x, m, p = 0, s; string b;
 	fstream file;
@@ -110,7 +465,7 @@ int main1() {
 	cout << endl; cin.clear(); cin.ignore();
 	return 0;
 }
-int main2() {
+int week2() {
 	cout << endl; cin.clear(); cin.ignore();
 	int x, s;
 	cout << "Введите Х: "; x = CIn(-2147483647, 2147483647);
@@ -121,7 +476,6 @@ int main2() {
 	return 0;
 }
 int ra() {
-	setlocale(LC_ALL, "rus");
 	float a, b;
 	cout << "Сторона a - "; a = Cin(-2147483647, 2147483647);
 	cout << "Сторона b - "; b = Cin(-2147483647, 2147483647);
@@ -129,22 +483,19 @@ int ra() {
 	return 0;
 }
 int ta() {
-	setlocale(LC_ALL, "rus");
 	float a, h;
 	cout << "Основание - "; a = Cin(-2147483647, 2147483647);
 	cout << "Высота - "; h = Cin(-2147483647, 2147483647);
 	cout << "Площадь тругольника равна " << abs((a * h) / 2) << '\n';
-
 	return 0;
 }
 int ci() {
-	setlocale(LC_ALL, "rus");
 	double r;
 	cout << "Радиус - "; r = Cin(-2147483647, 2147483647);
 	cout << "Площадь круга равна " << pow(r, 2) << "pi" << '\n';
 	return 0;
 }
-int main3() {
+int week3() {
 	cout << endl; cin.clear(); cin.ignore();
 	int s, n;
 	cout << "Выберите фигуру \n 1 - Прямоугольник \n 2 - Тругольник \n 3 - Круг \nФигура - ";
@@ -163,7 +514,7 @@ int main3() {
 	cout << endl; cin.clear(); cin.ignore();
 	return 0;
 }
-int main4() {
+int week4() {
 	cout << endl; cin.clear(); cin.ignore();
 	int s;
 	for (int i = 0; i < 49; i++)
@@ -178,7 +529,7 @@ int main4() {
 	cout << endl; cin.clear(); cin.ignore();
 	return 0;
 }
-int main5() {
+int week5() {
 	cout << endl; cin.clear(); cin.ignore();
 	int s;
 	HWND hwnd = GetConsoleWindow();
@@ -197,7 +548,7 @@ int main5() {
 
 	return 0;
 }
-int main6() {
+int week6() {
 	cout << endl; cin.clear(); cin.ignore();
 	string s, w; int a; int res;
 	res = 0;
@@ -522,38 +873,34 @@ int main6() {
 	return 0;
 }
 int var1() {
-	setlocale(LC_ALL, "Russian");
 	int n, m, i, c, s;
 	m = 37;
 	i = 3;
 	c = 64;
 	cout << "Введите количество чисел" << endl;
-	cin >> n;
+	n = CIN(INT_MIN, INT_MAX);
 	s = (rand() * 13 - 65) % 2;
-	for (int k = 1; k <= n; k++)
-	{
+	for (int k = 1; k <= n; k++) {
 		s = (m * s + i) % c;
 		cout << s << endl;
 	}
 	return 0;
 }
 int var2() {
-	setlocale(LC_ALL, "Russian");
 	int n, m, i, c, s;
 	m = 25173;
 	i = 13849;
 	c = 65537;
 	cout << "Введите количество чисел" << endl;
-	cin >> n;
+	n = CIN(INT_MIN, INT_MAX);
 	s = (rand() * 13 - 65) % 2;
-	for (int k = 1; k <= n; k++)
-	{
+	for (int k = 1; k <= n; k++) {
 		s = (m * s + i) % c;
 		cout << s << endl;
 	}
 	return 0;
 }
-int main7() {
+int week7() {
 	cout << endl;
 	int s;
 	cout << "Выберете вариант генерации \n I вариант - 1 \n II вариант - 2\n Выход из программы -3\nВариант - ";
@@ -571,7 +918,7 @@ int main7() {
 	cout << endl;
 	return 0;
 }
-int main8() {
+int week8() {
 	cout << endl;
 	int row1, row2, col1, col2;
 	double** a, ** b, ** c;
@@ -667,7 +1014,7 @@ void other(int num, int nov) {
 	other(num / nov, nov);
 	cout << symbol(num % nov);
 }
-int main9() {
+int week9() {
 	cout << endl;
 	int num = 0, star, nov, in = 0, flag = 0;
 	string chislo1;
@@ -731,7 +1078,7 @@ int main9() {
 	cout << endl;
 	return 0;
 }
-void week4() {
+void Week4() {
 	cout << endl;
 	int s;
 	cout << "Введите № задания:\n 1 - 'ФАЙЛ'\n 2 - 'ЗНАК ЧИСЛА'\n 3 - 'ГЕОМЕТРИЧЕСКИЕ ФИГУРЫ'\n 4 - 'БЫЛАЯ СЛАВА'\n 5 - 'СИНУСОИДА'\n 6 - 'АВТОМАТНЫЙ РАСПОЗНОВАТЕЛЬ'\n 7 - 'ГЕНЕРАТОР ПСЕВДОСЛУЧАЙНЫХ ЧИСЕЛ'\n 8 - 'УМНОЖЕНИЕ МАТРИЦ'\n 9 - 'СИСТЕМЫ СЧИСЛЕНИЯ'\n 0 - Подняться на уровень выше\nНомер -  ";
@@ -740,40 +1087,40 @@ void week4() {
 	case 0:
 		break;
 	case 1:
-		main1();
-		week4();
+		week1();
+		Week4();
 		break;
 	case 2:
-		main2();
-		week4();
+		week2();
+		Week4();
 		break;
 	case 3:
-		main3();
-		week4();
+		week3();
+		Week4();
 		break;
 	case 4:
-		main4();
 		week4();
+		Week4();
 		break;
 	case 5:
-		main5();
-		week4();
+		week5();
+		Week4();
 		break;
 	case 6:
-		main6();
-		week4();
+		week6();
+		Week4();
 		break;
 	case 7:
-		main7();
-		week4();
+		week7();
+		Week4();
 		break;
 	case 8:
-		main8();
-		week4();
+		week8();
+		Week4();
 		break;
 	case 9:
-		main9();
-		week4();
+		week9();
+		Week4();
 		break;
 	}
 }
@@ -897,8 +1244,6 @@ string O3() {
 }
 void Obrabotka() {
 	cout << endl;
-	SetConsoleOutputCP(1251);
-	SetConsoleCP(1251);
 
 	cout << "Введите № задания:\n 1 - 'Замена пробелов определенным символом'\n 2 - 'Удаление определенного символа'\n 3 - 'Преобразование строки в столбец'\n 0 - Подняться на уровень выше\nНомер - 	";
 	int s; s = CIN(0, 3);
@@ -924,6 +1269,7 @@ void Obrabotka() {
 }
 
 int Evklid() {
+	cout << endl;
 	int a, b;
 	cout << "Введите первое число: "; a = Cin(-2147483647, 2147483647);
 
@@ -943,6 +1289,7 @@ int Evklid() {
 	return 0;
 }
 int Eratocfen() {
+	cout << endl;
 	int x;
 	cout << "Введите границу: ";
 	x = Cin(-2147483647, 2147483647);
@@ -1148,19 +1495,22 @@ int main() {
 	SetConsoleOutputCP(1251);
 	SetConsoleCP(1251);
 	int s;
-	cout << "Введите № задания:\n 1 - '1-я неделя'\n 2 - '2-я неделя'\n 3 - '3-я неделя'\n 4 - '4-я неделя'\n 5 - 'Спиннеры'\n 6 - 'Алгоритм Евклида'\n 7 - 'Решето Эратосфена'\n 8 - 'Stupid Sort'\n 9 - 'Задача про Шарики'\n 10 - 'Обработка'\n0 - Завершение программы\nНомер -  ";
+	cout << "Введите № задания:\n 1 - '1-я неделя'\n 2 - '2-я неделя'\n 3 - '3-я неделя'\n 4 - '4-я неделя'\n 5 - 'Спиннеры'\n 6 - 'Алгоритм Евклида'\n 7 - 'Решето Эратосфена'\n 8 - 'Stupid Sort'\n 9 - 'Задача про Шарики'\n 10 - 'Обработка'\n 0 - Завершение программы\nНомер -  ";
 	s = CIN(0,10);
 	switch (s) {
 	case 0:
 		break;
 	case 1:
-
+		Week1();
+		main();
 		break;
 	case 2:
-		
+		Week2();
+		main();
 		break;
 	case 3:
-		
+		Week3();
+		main();
 		break;
 	case 4:
 		week4();

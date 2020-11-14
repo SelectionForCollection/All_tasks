@@ -106,17 +106,17 @@ long double CiN(long min, long max) {
 	//Исключение нуля
 	if (a == 0) {
 		cout << "Введите число отличное от нуля" << endl;
-		a = Cin(min, max);
+		a = CiN(min, max);
 	}
 	//Верхний предел
 	if (a > max) {
 		cout << "Число выходит за промежуток. По условию a =< " << max << " и а >= " << min << endl;
-		a = Cin(min, max);
+		a = CiN(min, max);
 	}
 	//Нижний Предел
 	if (a < min) {
 		cout << "Число выходит за промежуток. По условию a =< " << max << " и а >= " << min << endl;
-		a = Cin(min, max);
+		a = CiN(min, max);
 	}
 	//Исключение отрицательных чисел
 	if (a < 0) {

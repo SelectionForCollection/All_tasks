@@ -1520,6 +1520,18 @@ void spin() {
 	}
 }
 
+int Balls() {
+	cout << endl;
+	long long n; n = Cin(0,INT_MAX);
+	long long* k = new long long[n];
+	k[0] = 0; k[1] = 1;
+	for (int i = 2; i <= n; i++) {
+		k[i] = (k[i - 1] + k[i - 2]) * (i - 1);
+	}
+	cout << k[n] << endl;
+	return 0;
+}
+
 int main() {
 	cout << endl;
 	SetConsoleOutputCP(1251);
@@ -1557,21 +1569,23 @@ int main() {
 		break;
 	case 6:
 		Evklid();
-		cout << endl; system("cls");
+		cout << endl; system("pause"); system("cls");
 		main();
 		break;
 	case 7:
 		Eratocfen();
-		cout << endl; system("cls");
+		cout << endl; system("pause"); system("cls");
 		main();
 		break;
 	case 8:
 		Stupid_main();
-		cout << endl; system("cls");
+		cout << endl; system("pause"); system("cls");
 		main();
 		break;
 	case 9:
-		
+		Balls();
+		cout << endl; system("pause"); system("cls");
+		main();
 		break;
 	case 10:
 		Obrabotka();

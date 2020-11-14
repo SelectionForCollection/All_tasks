@@ -103,7 +103,7 @@ string w1() {
 }
 float w2() {
 	cout << endl;
-	long long x, y;
+	long double x, y;
 	cout << "Введите первое число: "; x = CIn(-2147483647, 2147483647);
 	cout << "Введите второе число: "; y = CIn(-2147483647, 2147483647);
 	if (y == 0) {
@@ -198,9 +198,9 @@ float w4() {
 float w5() {
 	cout << endl;
 	int l, sh, d;
-	cout << "Горит ли лампа?\n 1- да\n 0- нет\nНомер - "; l = CIN(0,1);
-	cout << "Открыты ли шторы?\n 1- да\n 0- нет\nНомер - "; sh = CIN(0, 1);
-	cout << "Сейчас день?\n 1- да\n 0- нет\nНомер - "; d = CIN(0,1);
+	cout << "Горит ли лампа?\n 1- да\n 0- нет\nНомер - "; l = CIN(0, 1); cout << endl;
+	cout << "Открыты ли шторы?\n 1- да\n 0- нет\nНомер - "; sh = CIN(0, 1); cout << endl;
+	cout << "Сейчас день?\n 1- да\n 0- нет\nНомер - "; d = CIN(0, 1); cout << endl;
 
 		if ((l == 1) || ((sh == 1) & (d == 1))) {
 			cout << "В комнате светло" << endl;
@@ -214,29 +214,34 @@ float w5() {
 void Week1() {
 	cout << endl;
 	int s;
-	cout << "Введите № задания:\n 1 - 'ИМЯ'\n 2 - 'АРИФМЕТИКА'\n 3 - 'УРАВНЕНИЕ'\n 4 - 'ЕЩЕ ОДНО УРАВНЕНИЕ'\n 5 - 'ЛАМПА'\n0 - Подняться на уровень выше\nНомер -  ";
+	cout << "Первая неделя.\nВведите № задания:\n 1 - 'ИМЯ'\n 2 - 'АРИФМЕТИКА'\n 3 - 'УРАВНЕНИЕ'\n 4 - 'ЕЩЕ ОДНО УРАВНЕНИЕ'\n 5 - 'ЛАМПА'\n 0 - Подняться на уровень выше\nНомер -  ";
 	s = CIN(0,5);
 	switch (s) {
 	case 0:
 		break;
 	case 1:
 		w1();
+		cout << endl; system("pause"); system("cls");
 		Week1();
 		break;
 	case 2:
 		w2();
+		cout << endl; system("pause"); system("cls");
 		Week1();
 		break;
 	case 3:
 		w3();
+		cout << endl; system("pause"); system("cls");
 		Week1();
 		break;
 	case 4:
 		w4();
+		cout << endl; system("pause"); system("cls");
 		Week1();
 		break;
 	case 5:
 		w5();
+		cout << endl; system("pause"); system("cls");
 		Week1();
 		break;
 	}
@@ -330,29 +335,34 @@ float we5() {
 void Week2() {
 	cout << endl;
 	int s;
-	cout << "Введите № задания:\n 1 - 'КОНУС'\n 2 - 'РАЗВЕТВЛЕНИЯ'\n 3 - 'ФУНКЦИЯ'\n 4 - 'ПОРЯДОК'\n 5 - 'ТАБУЛЯЦИЯ'\n0 - Подняться на уровень выше\nНомер -  ";
+	cout << "Вторая неделя.\nВведите № задания:\n 1 - 'КОНУС'\n 2 - 'РАЗВЕТВЛЕНИЯ'\n 3 - 'ФУНКЦИЯ'\n 4 - 'ПОРЯДОК'\n 5 - 'ТАБУЛЯЦИЯ'\n 0 - Подняться на уровень выше\nНомер -  ";
 	s = CIN(0, 5);
 	switch (s) {
 	case 0:
 		break;
 	case 1:
 		we1();
+		cout << endl; system("pause"); system("cls");
 		Week2();
 		break;
 	case 2:
 		we2();
+		cout << endl; system("pause"); system("cls");
 		Week2();
 		break;
 	case 3:
 		we3();
+		cout << endl; system("pause"); system("cls");
 		Week2();
 		break;
 	case 4:
 		we4();
+		cout << endl; system("pause"); system("cls");
 		Week2();
 		break;
 	case 5:
 		we5();
+		cout << endl; system("pause"); system("cls");
 		Week2();
 		break;
 	}
@@ -417,29 +427,34 @@ float wee5() {
 void Week3() {
 	cout << endl; cin.clear(); cin.ignore();
 	int s;
-	cout << "Введите № задания:\n 1 - 'ЗАЕМ'\n 2 - 'ССУДА'\n 3 - 'КОПИРОВАНИЕ ФАЙЛА'\n 4 - 'ФИЛЬТР'\n 5 - 'СОРТИРОВКА БУКВ'\n 0 - Подняться на уровень выше\nНомер -  ";
+	cout << "Третья неделя.\nВведите № задания:\n 1 - 'ЗАЕМ'\n 2 - 'ССУДА'\n 3 - 'КОПИРОВАНИЕ ФАЙЛА'\n 4 - 'ФИЛЬТР'\n 5 - 'СОРТИРОВКА БУКВ'\n 0 - Подняться на уровень выше\nНомер -  ";
 	s = CIN(0, 5);
 	switch (s) {
 	case 0:
 		break;
 	case 1:
 		wee1();
+		cout << endl; system("pause"); system("cls");
 		Week3();
 		break;
 	case 2:
 		wee2();
+		cout << endl; system("pause"); system("cls");
 		Week3();
 		break;
 	case 3:
 		wee3();
+		cout << endl; system("pause"); system("cls");
 		Week3();
 		break;
 	case 4:
 		wee4();
+		cout << endl; system("pause"); system("cls");
 		Week3();
 		break;
 	case 5:
 		wee5();
+		cout << endl; system("pause"); system("cls");
 		Week3();
 		break;
 	}
@@ -1081,45 +1096,54 @@ int week9() {
 void Week4() {
 	cout << endl;
 	int s;
-	cout << "Введите № задания:\n 1 - 'ФАЙЛ'\n 2 - 'ЗНАК ЧИСЛА'\n 3 - 'ГЕОМЕТРИЧЕСКИЕ ФИГУРЫ'\n 4 - 'БЫЛАЯ СЛАВА'\n 5 - 'СИНУСОИДА'\n 6 - 'АВТОМАТНЫЙ РАСПОЗНОВАТЕЛЬ'\n 7 - 'ГЕНЕРАТОР ПСЕВДОСЛУЧАЙНЫХ ЧИСЕЛ'\n 8 - 'УМНОЖЕНИЕ МАТРИЦ'\n 9 - 'СИСТЕМЫ СЧИСЛЕНИЯ'\n 0 - Подняться на уровень выше\nНомер -  ";
+	cout << "Четвертая неделя.\nВведите № задания:\n 1 - 'ФАЙЛ'\n 2 - 'ЗНАК ЧИСЛА'\n 3 - 'ГЕОМЕТРИЧЕСКИЕ ФИГУРЫ'\n 4 - 'БЫЛАЯ СЛАВА'\n 5 - 'СИНУСОИДА'\n 6 - 'АВТОМАТНЫЙ РАСПОЗНОВАТЕЛЬ'\n 7 - 'ГЕНЕРАТОР ПСЕВДОСЛУЧАЙНЫХ ЧИСЕЛ'\n 8 - 'УМНОЖЕНИЕ МАТРИЦ'\n 9 - 'СИСТЕМЫ СЧИСЛЕНИЯ'\n 0 - Подняться на уровень выше\nНомер -  ";
 	s = CIN(0,9);
 	switch (s) {
 	case 0:
 		break;
 	case 1:
 		week1();
+		cout << endl; system("pause"); system("cls");
 		Week4();
 		break;
 	case 2:
 		week2();
+		cout << endl; system("pause"); system("cls");
 		Week4();
 		break;
 	case 3:
 		week3();
+		cout << endl; system("pause"); system("cls");
 		Week4();
 		break;
 	case 4:
 		week4();
+		cout << endl; system("pause"); system("cls");
 		Week4();
 		break;
 	case 5:
 		week5();
+		cout << endl; system("pause"); system("cls");
 		Week4();
 		break;
 	case 6:
 		week6();
+		cout << endl; system("pause"); system("cls");
 		Week4();
 		break;
 	case 7:
 		week7();
+		cout << endl; system("pause"); system("cls");
 		Week4();
 		break;
 	case 8:
 		week8();
+		cout << endl; system("pause"); system("cls");
 		Week4();
 		break;
 	case 9:
 		week9();
+		cout << endl; system("pause"); system("cls");
 		Week4();
 		break;
 	}
@@ -1253,17 +1277,18 @@ void Obrabotka() {
 		break;
 	case 1:
 		O1();
+		cout << endl; system("pause"); system("cls");
 		Obrabotka();
 		break;
 	case 2:
 		O2();
+		cout << endl; system("pause"); system("cls");
 		Obrabotka();
 		break;
 	case 3:
 		O3();
+		cout << endl; system("pause"); system("cls");
 		Obrabotka();
-		break;
-	default:
 		break;
 	}
 }
@@ -1462,29 +1487,34 @@ int spin5() {
 void spin() {
 	cout << endl;
 	int s;
-	cout << "Введите № задания:\n 1 - 'СПИННЕРЫ'\n 2 - 'СНОВА СПИННЕРЫ'\n 3 - 'НЕ ПРО СПИННЕРЫ'\n 4 - 'ПЛАЦКАРТНЫЙ ВАГОН'\n 5 - 'КИОНОТЕАТР'\n 0 - Подняться на уровень выше\nНомер -  ";
+	cout << "Спиннеры.\nВведите № задания:\n 1 - 'СПИННЕРЫ'\n 2 - 'СНОВА СПИННЕРЫ'\n 3 - 'НЕ ПРО СПИННЕРЫ'\n 4 - 'ПЛАЦКАРТНЫЙ ВАГОН'\n 5 - 'КИОНОТЕАТР'\n 0 - Подняться на уровень выше\nНомер -  ";
 	s = CIN(0, 6);
 	switch (s) {
 	case 0:
 		break;
 	case 1:
 		spin1();
+		cout << endl; system("pause"); system("cls");
 		spin();
 		break;
 	case 2:
 		spin2();
+		cout << endl; system("pause"); system("cls");
 		spin();
 		break;
 	case 3:
 		spin3();
+		cout << endl; system("pause"); system("cls");
 		spin();
 		break;
 	case 4:
 		spin4();
+		cout << endl; system("pause"); system("cls");
 		spin();
 		break;
 	case 5:
 		spin5();
+		cout << endl; system("pause"); system("cls");
 		spin();
 		break;
 	}
@@ -1495,41 +1525,49 @@ int main() {
 	SetConsoleOutputCP(1251);
 	SetConsoleCP(1251);
 	int s;
-	cout << "Введите № задания:\n 1 - '1-я неделя'\n 2 - '2-я неделя'\n 3 - '3-я неделя'\n 4 - '4-я неделя'\n 5 - 'Спиннеры'\n 6 - 'Алгоритм Евклида'\n 7 - 'Решето Эратосфена'\n 8 - 'Stupid Sort'\n 9 - 'Задача про Шарики'\n 10 - 'Обработка'\n 0 - Завершение программы\nНомер -  ";
+	cout << "Главное меню.\nВведите № задания:\n 1 - '1-я неделя'\n 2 - '2-я неделя'\n 3 - '3-я неделя'\n 4 - '4-я неделя'\n 5 - 'Спиннеры'\n 6 - 'Алгоритм Евклида'\n 7 - 'Решето Эратосфена'\n 8 - 'Stupid Sort'\n 9 - 'Задача про Шарики'\n 10 - 'Обработка'\n 0 - Завершение программы\nНомер -  ";
 	s = CIN(0,10);
 	switch (s) {
 	case 0:
 		break;
 	case 1:
 		Week1();
+		cout << endl; system("cls");
 		main();
 		break;
 	case 2:
 		Week2();
+		cout << endl; system("cls");
 		main();
 		break;
 	case 3:
 		Week3();
+		cout << endl; system("cls");
 		main();
 		break;
 	case 4:
 		week4();
+		cout << endl; system("cls");
 		main();
 		break;
 	case 5:
 		spin();
+		cout << endl; system("cls");
 		main();
 		break;
 	case 6:
 		Evklid();
+		cout << endl; system("cls");
 		main();
 		break;
 	case 7:
 		Eratocfen();
+		cout << endl; system("cls");
 		main();
 		break;
 	case 8:
 		Stupid_main();
+		cout << endl; system("cls");
 		main();
 		break;
 	case 9:
@@ -1537,6 +1575,7 @@ int main() {
 		break;
 	case 10:
 		Obrabotka();
+		cout << endl; system("cls");
 		main();
 		break;
 	}

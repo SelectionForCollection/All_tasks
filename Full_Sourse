@@ -55,12 +55,12 @@ int CIN(long min, long max) {
 	//Верхний предел
 	if (a > max) {
 		cout << "Число выходит за промежуток. По условию a =< " << max << " и а >= " << min << endl;
-		a = Cin(min, max);
+		a = CIN(min, max);
 	}
 	//Нижний Предел
 	if (a < min) {
 		cout << "Число выходит за промежуток. По условию a =< " << max << " и а >= " << min << endl;
-		a = Cin(min, max);
+		a = CIN(min, max);
 	}
 	//Исключение отрицательных чисел
 	if (a < 0) {
@@ -83,12 +83,45 @@ int CIn(long min, long max) {
 	//Верхний предел
 	if (a > max) {
 		cout << "Число выходит за промежуток. По условию a =< " << max << " и а >= " << min << endl;
+		a = CIn(min, max);
+	}
+	//Нижний Предел
+	if (a < min) {
+		cout << "Число выходит за промежуток. По условию a =< " << max << " и а >= " << min << endl;
+		a = CIn(min, max);
+	}
+
+	return a;
+}
+//Функция проверки, для дробных.
+long double CiN(long min, long max) {
+	long double a;
+	//Проверяем рациональность числа и ввод лишних символов 
+	while (!(cin >> a) || (cin.peek() != '\n')) {
+		cin.clear();
+		while (cin.get() != '\n');
+		cout << "Явно присутствуют некорректные для данного типа символы. Проверьте корректность." << endl;
+	}
+
+	//Исключение нуля
+	if (a == 0) {
+		cout << "Введите число отличное от нуля" << endl;
+		a = Cin(min, max);
+	}
+	//Верхний предел
+	if (a > max) {
+		cout << "Число выходит за промежуток. По условию a =< " << max << " и а >= " << min << endl;
 		a = Cin(min, max);
 	}
 	//Нижний Предел
 	if (a < min) {
 		cout << "Число выходит за промежуток. По условию a =< " << max << " и а >= " << min << endl;
 		a = Cin(min, max);
+	}
+	//Исключение отрицательных чисел
+	if (a < 0) {
+		cout << "Вы ввели (" << a << ") Возьмем все-таки положительное, то есть " << abs(a) << endl;
+		a = abs(a);
 	}
 
 	return a;
@@ -249,21 +282,33 @@ void Week1() {
 
 int we1() {
 	cout << endl;
-	long long R, r, l, h, s;
-	cout << "Ведите радиус большего основания: "; R = Cin(-2147483647,2147483647);
-	cout << "Ведите радиус меньшего основания: "; r = Cin(-2147483647,2147483647);
-	cout << "Введите образующую: "; l = Cin(INT_MIN,INT_MAX);
-	cout << "Введите высоту: "; h = Cin(INT_MIN, INT_MAX);
-	if (l < h) {
-		cout << "Образующая не может быть меньше высоты" << endl;
+	long double R, r, l, h, s;
+	cout << "Ведите радиус большего основания: "; R = CiN(-2147483647,2147483647);
+	cout << "Ведите радиус меньшего основания: "; r = CiN(-2147483647,2147483647);
+	cout << "Введите образующую: "; l = CiN(INT_MIN,INT_MAX);
+	cout << "Введите высоту: "; h = CiN(INT_MIN, INT_MAX);
+
+	if (r > R) {
+		s = r;
+		r = R;
+		r = s;
+	}
+
+	if (l != sqrt(pow((R - r), 2) + pow(h, 2))) {
+		cout << "Конуса не существует" << endl;
 	}
 	else {
-		if (r == R) {
-			cout << "Это цилиндр" << endl;
+		if (l < h) {
+			cout << "Образующая не может быть меньше высоты" << endl;
 		}
 		else {
-			cout << "Объем равен " << abs((h * (pow(R, 2) + R * r + pow(r, 2)) / 3)) << "*pi" << endl;
-			cout << "Площадь полной поверхности равна " << abs(pow(R, 2) + (R + r) * l + pow(r, 2)) << "*pi" << endl;
+			if (r == R) {
+				cout << "Это цилиндр" << endl;
+			}
+			else {
+				cout << "Объем равен " << abs((h * (pow(R, 2) + R * r + pow(r, 2)) / 3)) << "*pi" << endl;
+				cout << "Площадь полной поверхности равна " << abs(pow(R, 2) + (R + r) * l + pow(r, 2)) << "*pi" << endl;
+			}
 		}
 	}
 	return 0;
@@ -305,7 +350,7 @@ float we3() {
 float we4() {
 	cout << endl;
 	int N;
-	cout << "Введите границу: "; N = CIn(INT_MIN, INT_MAX);
+	cout << "Введите границу: "; N = CIn(1, INT_MAX);
 	if (N >= 2147483637) {
 		for (int u = N; u < 2147483647; u++) {
 			cout << u + 1 << endl;
@@ -371,9 +416,9 @@ void Week2() {
 float wee1() {
 	cout << endl;
 	long double s, p, n;
-	cout << "S = "; s = Cin(INT_MIN, INT_MAX);
-	cout << "p = "; p = Cin(INT_MIN, 100);
-	cout << "n = "; n = Cin(1, INT_MAX);
+	cout << "S = "; s = CiN(INT_MIN, INT_MAX);
+	cout << "p = "; p = CiN(INT_MIN, 100);
+	cout << "n = "; n = CiN(1, INT_MAX);
 	if (pow(1 + p / 100, n) == 1) {
 		cout << "Деление на ноль. Проверьте корректность. " << endl;
 	}
@@ -385,9 +430,9 @@ float wee1() {
 float wee2() {
 	cout << endl;
 	long double s, m, n;
-	cout << "Введите сумму заема(в рублях)\nS = "; s = Cin(INT_MIN, INT_MAX);
-	cout << "Введите количество лет(в годах)\nn = "; n = Cin(1, INT_MAX);
-	cout << "Введите месячную выплату(в рублях)\nm = "; m = Cin(INT_MIN, INT_MAX);
+	cout << "Введите сумму заема(в рублях)\nS = "; s = CiN(INT_MIN, INT_MAX);
+	cout << "Введите количество лет(в годах)\nn = "; n = CiN(1, INT_MAX);
+	cout << "Введите месячную выплату(в рублях)\nm = "; m = CiN(INT_MIN, INT_MAX);
 	cout << "Процент равен " << ((pow(((m * 12 * n) / s), 1 / n) - 1) * 100) << endl;
 	return 0;
 }
@@ -1522,6 +1567,7 @@ void spin() {
 
 int Balls() {
 	cout << endl;
+	cout <<"Введите количество шариков: ";
 	long long n; n = Cin(0,INT_MAX);
 	long long* k = new long long[n];
 	k[0] = 0; k[1] = 1;
@@ -1558,7 +1604,7 @@ int main() {
 		main();
 		break;
 	case 4:
-		week4();
+		Week4();
 		cout << endl; system("cls");
 		main();
 		break;

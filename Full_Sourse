@@ -235,12 +235,12 @@ float w5() {
 	cout << "Открыты ли шторы?\n 1- да\n 0- нет\nНомер - "; sh = CIN(0, 1); cout << endl;
 	cout << "Сейчас день?\n 1- да\n 0- нет\nНомер - "; d = CIN(0, 1); cout << endl;
 
-		if ((l == 1) || ((sh == 1) & (d == 1))) {
-			cout << "В комнате светло" << endl;
-		}
-		else {
-			cout << "В комнате темно " << endl;
-		}
+	if ((l == 1) || ((sh == 1) & (d == 1))) {
+		cout << "В комнате светло" << endl;
+	}
+	else {
+		cout << "В комнате темно " << endl;
+	}
 
 	return 0;
 }
@@ -248,7 +248,7 @@ void Week1() {
 	cout << endl;
 	int s;
 	cout << "Первая неделя.\nВведите № задания:\n 1 - 'ИМЯ'\n 2 - 'АРИФМЕТИКА'\n 3 - 'УРАВНЕНИЕ'\n 4 - 'ЕЩЕ ОДНО УРАВНЕНИЕ'\n 5 - 'ЛАМПА'\n 0 - Подняться на уровень выше\nНомер -  ";
-	s = CIN(0,5);
+	s = CIN(0, 5);
 	switch (s) {
 	case 0:
 		break;
@@ -283,9 +283,9 @@ void Week1() {
 int we1() {
 	cout << endl;
 	long double R, r, l, h, s, S;
-	cout << "Ведите радиус большего основания: "; R = CiN(-2147483647,2147483647);
-	cout << "Ведите радиус меньшего основания: "; r = CiN(-2147483647,2147483647);
-	cout << "Введите образующую: "; l = CiN(INT_MIN,INT_MAX);
+	cout << "Ведите радиус большего основания: "; R = CiN(-2147483647, 2147483647);
+	cout << "Ведите радиус меньшего основания: "; r = CiN(-2147483647, 2147483647);
+	cout << "Введите образующую: "; l = CiN(INT_MIN, INT_MAX);
 	cout << "Введите высоту: "; h = CiN(INT_MIN, INT_MAX);
 
 	if (r > R) {
@@ -295,7 +295,7 @@ int we1() {
 	}
 
 	if (l != sqrt(pow((R - r), 2) + pow(h, 2))) {
-		cout << "Конуса не существует. Образующая должна быть равна корню суммы квадратов разности радиусов оснований и высоты. То есть "<< sqrt(pow((R - r), 2) + pow(h, 2))<<". Заменить?\n 1 - да\n 0 - нет\nНомер - " << endl;
+		cout << "Конуса не существует. Образующая должна быть равна корню суммы квадратов разности радиусов оснований и высоты. То есть " << sqrt(pow((R - r), 2) + pow(h, 2)) << ". Заменить?\n 1 - да\n 0 - нет\nНомер - " << endl;
 		S = CIN(0, 1);
 		if (S == 1) {
 			l = sqrt(pow((R - r), 2) + pow(h, 2));
@@ -335,8 +335,8 @@ int we1() {
 float we2() {
 	cout << endl;
 	float x, a;
-	cout << "Введите х: "; x = CIn(INT_MIN,INT_MAX);
-	cout << "Введите а: "; a = CIn(INT_MIN,INT_MAX);
+	cout << "Введите х: "; x = CIn(INT_MIN, INT_MAX);
+	cout << "Введите а: "; a = CIn(INT_MIN, INT_MAX);
 	if ((x != 0) & (a >= pow(x, 2))) {
 		if (sqrt(pow(x, 2)) < 1) {
 			cout << "w = " << a * log(sqrt(pow(x, 2))) << endl;
@@ -441,7 +441,7 @@ float wee1() {
 	if (pow(1 + p / 100, n) == 1) {
 		cout << "Деление на ноль. Проверьте корректность. " << endl;
 	}
-	else{
+	else {
 		cout << "m = " << (s * (p / 100) * pow(1 + (p / 100), n)) / (12 * (pow(1 + (p / 100), n) - 1)) << endl;
 	}
 	return 0;
@@ -480,7 +480,7 @@ float wee4() {
 float wee5() {
 	cout << endl; cin.clear(); cin.ignore();
 	multiset<char> str;
-	int n = 30; string s; char temp;
+	int n = 30; string s;
 	cout << "Вводите строку: "; getline(cin, s);
 	for (int i = s.length(); i >= 0; i--) {
 		str.insert(s[i]);
@@ -527,19 +527,31 @@ void Week3() {
 
 int week1() {
 	cout << endl; cin.clear(); cin.ignore();
-	int x, m, p = 0, s; string b;
+	int m[10], x; string b; long long p = 0;
 	fstream file;
 	file.open("D:\\дз по ПП\\Домашнее задание 4\\Файл для 1-й задачи.txt");
 	for (int z = 0; z < 10; z++) {
-		cout << "Введите число номер " << z + 1;
-		x = Cin(-2147483647, 2147483647);
+		cout << "Введите число номер " << z + 1 << ": ";
+		x = CIn(-2147483647, 2147483647);
+		m[z] = x;
 		p = p + x;
 		file << x << " ";
 	}
 	file.close();
 	file.open("D:\\дз по ПП\\Домашнее задание 4\\Файл для 1-й задачи.txt");
 	string str(istreambuf_iterator<char>(file), istreambuf_iterator<char>());
-	cout << "Сумма равна " << p << endl;
+	for (int i = 0; i < 10; i++) {
+		if ((i == 0) and (m[i] >= 0)) {
+			i++; i--;
+		}
+		else {
+			if (m[i] >= 0) {
+				cout << "+";
+			}
+		}
+		cout << " " << m[i] << " ";
+	}
+	cout << " = " << p << endl;
 	file.close();
 	cout << endl; cin.clear(); cin.ignore();
 	return 0;
@@ -578,7 +590,7 @@ int week3() {
 	cout << endl; cin.clear(); cin.ignore();
 	int s, n;
 	cout << "Выберите фигуру \n 1 - Прямоугольник \n 2 - Тругольник \n 3 - Круг \nФигура - ";
-	s = Cin(0,3);
+	s = Cin(0, 3);
 	switch (s) {
 	case 1:
 		ra();
@@ -609,12 +621,11 @@ int week4() {
 	return 0;
 }
 int week5() {
-	cout << endl; cin.clear(); cin.ignore();
-	int s;
+	cin.clear(); cin.ignore();
 	HWND hwnd = GetConsoleWindow();
 	HDC hdc = GetDC(hwnd);
 
-	system("cls");
+	system("cls"); cout << "\r";
 
 	int x = 0;
 	for (float i = 0; i < 3.14 * 1000; i += 0.05) {
@@ -628,8 +639,8 @@ int week5() {
 	return 0;
 }
 int week6() {
-	cout << endl; cin.clear(); cin.ignore();
-	string s, w; int a; int res;
+	cout << endl; cin.clear();
+	string s, w; int res;
 	res = 0;
 	cout << "Введите строку: "; getline(cin, s);
 
@@ -640,7 +651,7 @@ int week6() {
 	}
 
 	for (int i = 0; i <= s.size(); i++) {
-		if (s[i] = ' ') {
+		if (s[i] == ' ') {
 			s.erase(i, 1);
 		}
 	}
@@ -982,8 +993,8 @@ int var2() {
 int week7() {
 	cout << endl;
 	int s;
-	cout << "Выберете вариант генерации \n I вариант - 1 \n II вариант - 2\n Выход из программы -3\nВариант - ";
-	s = Cin(0,3); cout << endl;
+	cout << "Выберете вариант генерации \n I вариант - 1 \n II вариант - 2\n Выход из программы - 3\nВариант - ";
+	s = Cin(0, 3); cout << endl;
 	switch (s) {
 	case 1:
 		var1();
@@ -999,7 +1010,7 @@ int week7() {
 }
 int week8() {
 	cout << endl;
-	int row1, row2, col1, col2;
+	int row1, row2, col1, col2; int t;
 	double** a, ** b, ** c;
 
 	cout << "Введите количество строк первой матрицы: ";
@@ -1010,8 +1021,7 @@ int week8() {
 	row2 = Cin(-2147483647, 2147483647);
 	cout << "Введите количество столбцов второй матрицы: ";
 	col2 = Cin(-2147483647, 2147483647);
-	if (col1 != row2)
-	{
+	if (col1 != row2) {
 		cout << "Умножение невозможно!";
 		cin.get(); cin.get();
 		return 0;
@@ -1023,7 +1033,7 @@ int week8() {
 		a[i] = new double[col1];
 		for (int j = 1; j <= col1; j++) {
 			cout << "a[" << i << "][" << j << "]= ";
-			a[i][j] = Cin(-2147483647, 2147483647);
+			a[i][j] = CIn(-2147483647, 2147483647);
 		}
 	}
 	// Вывод первой матрицы
@@ -1069,14 +1079,16 @@ int week8() {
 			cout << c[i][j] << " ";
 		cout << endl;
 	}
-	cout << endl;
-	cout << "Для матрицы получившейся в результате перемножения матриц из условия:"<< endl;
-	cout << "  Продавец получивший наибольшую выручку - 2. Наименьшую - 1" << endl;
-	cout << "  Продавец c наибольшими коммисионными - 1. Наименьшие - 3" << endl;
-	cout << "  Общая вырученная сумма равна " << 31.1 + 37.1 + 23.5 << endl;
-	cout << "  Всего коммисионных " << 18.3 + 13 + 10 << endl;
-	cout << "  Всего денег " << 31.6 + 37.6 + 24 << endl;
-
+	cout << "Хотите узнать результаты, для матрицы из условия?\n 1 - да\n 2 - нет\nНомер - "; t = Cin(1, 2);
+	if (t == 1) {
+		cout << endl;
+		cout << "Для матрицы получившейся в результате перемножения матриц из условия:" << endl;
+		cout << "  Продавец получивший наибольшую выручку - 2. Наименьшую - 1" << endl;
+		cout << "  Продавец c наибольшими коммисионными - 1. Наименьшие - 3" << endl;
+		cout << "  Общая вырученная сумма равна " << 31.1 + 37.1 + 23.5 << endl;
+		cout << "  Всего коммисионных " << 18.3 + 13 + 10 << endl;
+		cout << "  Всего денег " << 31.6 + 37.6 + 24 << endl;
+	}
 	return 0;
 }
 char symbol(int num) {
@@ -1096,72 +1108,56 @@ void other(int num, int nov) {
 int week9() {
 	cout << endl;
 	int num = 0, star, nov, in = 0, flag = 0;
-	string chislo1;
-	cout << "Введите число: "; chislo1 = CIN(-2147483647, 2147483647);
-	cout << "Введите старое основание: "; star = Cin(0,36);
-	cout << "Введите новое основание: "; nov = Cin(0,36);
+	string number;
+	cout << "Введите число: ";
+	cin >> number;
+	cout << "Введите основание системы: ";
+	star = Cin(1, 36);
+	cout << "Введите число новой системы: ";
+	nov = Cin(1, 36);
+	
+	reverse(number.begin(), number.end());
 
-	reverse(chislo1.begin(), chislo1.end());
-
-	for (int i = (chislo1.length() - 1); i >= 0; i--) {
-		if (chislo1[i] == '0') in = 0;
-		if (chislo1[i] == '1') in = 1;
-		if (chislo1[i] == '2') in = 2;
-		if (chislo1[i] == '3') in = 3;
-		if (chislo1[i] == '4') in = 4;
-		if (chislo1[i] == '5') in = 5;
-		if (chislo1[i] == '6') in = 6;
-		if (chislo1[i] == '7') in = 7;
-		if (chislo1[i] == '8') in = 8;
-		if (chislo1[i] == '9') in = 9;
-		if (chislo1[i] == 'a') in = 10;
-		if (chislo1[i] == 'b') in = 11;
-		if (chislo1[i] == 'c') in = 12;
-		if (chislo1[i] == 'd') in = 13;
-		if (chislo1[i] == 'e') in = 14;
-		if (chislo1[i] == 'f') in = 15;
-		if (chislo1[i] == 'g') in = 16;
-		if (chislo1[i] == 'h') in = 17;
-		if (chislo1[i] == 'i') in = 18;
-		if (chislo1[i] == 'j') in = 19;
-		if (chislo1[i] == 'k') in = 20;
-		if (chislo1[i] == 'l') in = 21;
-		if (chislo1[i] == 'm') in = 22;
-		if (chislo1[i] == 'n') in = 23;
-		if (chislo1[i] == 'o') in = 24;
-		if (chislo1[i] == 'p') in = 25;
-		if (chislo1[i] == 'q') in = 26;
-		if (chislo1[i] == 'r') in = 27;
-		if (chislo1[i] == 's') in = 28;
-		if (chislo1[i] == 't') in = 29;
-		if (chislo1[i] == 'u') in = 30;
-		if (chislo1[i] == 'v') in = 31;
-		if (chislo1[i] == 'w') in = 32;
-		if (chislo1[i] == 'x') in = 33;
-		if (chislo1[i] == 'y') in = 34;
-		if (chislo1[i] == 'z') in = 35;
+	for (int i = number.length() - 1; i >= 0; i--) {
+		if (number[i] == '0') in = 0;
+		if (number[i] == '1') in = 1;
+		if (number[i] == '2') in = 2;
+		if (number[i] == '3') in = 3;
+		if (number[i] == '4') in = 4;
+		if (number[i] == '5') in = 5;
+		if (number[i] == '6') in = 6;
+		if (number[i] == '7') in = 7;
+		if (number[i] == '8') in = 8;
+		if (number[i] == '9') in = 9;
+		if (number[i] == 'A') in = 10;
+		if (number[i] == 'B') in = 11;
+		if (number[i] == 'C') in = 12;
+		if (number[i] == 'D') in = 13;
+		if (number[i] == 'E') in = 14;
+		if (number[i] == 'F') in = 15;
 
 		if (in > flag) flag = in;
 
 		num = num + (in * pow(star, i));
 	}
-	if (flag < star) {
-		cout << "В десятичной системе счисления это " << num << endl;
-		cout << endl;
-		cout << "В " << nov << "-ричной системе счисления это будет ";
-		other(num, nov); cout << endl;
+	if (flag <= star) {
+		cout << "В десятеричной системе это будет: " << num << endl;
+		cout << "В " << nov << "-ричной это будет: ";
+		other(num, nov);
 	}
 	else {
-		cout << "Ошибка: исходное число является некорректной записью для системы с основанием " << star << endl;
+		cout << "Неверно введено основание системы или в изначальном числе присутствуют символы не подходящие данной системе." << endl;
 	}
+
 	cout << endl;
+
 	return 0;
 }
 void Week4() {
 	cout << endl;
 	int s;
 	cout << "Четвертая неделя.\nВведите № задания:\n 1 - 'ФАЙЛ'\n 2 - 'ЗНАК ЧИСЛА'\n 3 - 'ГЕОМЕТРИЧЕСКИЕ ФИГУРЫ'\n 4 - 'БЫЛАЯ СЛАВА'\n 5 - 'СИНУСОИДА'\n 6 - 'АВТОМАТНЫЙ РАСПОЗНОВАТЕЛЬ'\n 7 - 'ГЕНЕРАТОР ПСЕВДОСЛУЧАЙНЫХ ЧИСЕЛ'\n 8 - 'УМНОЖЕНИЕ МАТРИЦ'\n 9 - 'СИСТЕМЫ СЧИСЛЕНИЯ'\n 0 - Подняться на уровень выше\nНомер -  ";
-	s = CIN(0,9);
+	s = CIN(0, 9);
 	switch (s) {
 	case 0:
 		break;
@@ -1191,7 +1187,7 @@ void Week4() {
 		Week4();
 		break;
 	case 6:
-		week6();
+		cin.clear(); cin.ignore(); week6();
 		cout << endl; system("pause"); system("cls");
 		Week4();
 		break;
@@ -1215,13 +1211,11 @@ void Week4() {
 
 void stupid(int* a, int n) {
 	int i = 0;
-	while (i < n - 1) {
+	for (i = 0; i < n; i++) {
 		if (a[i + 1] < a[i]) {
 			swap(a[i], a[i + 1]);
 			i = 0;
 		}
-		else
-			i++;
 	}
 }
 int Stupid_main() {
@@ -1234,14 +1228,14 @@ int Stupid_main() {
 	int* arr = new int[n];
 
 	for (int i = 1; i <= n; i++) {
-		cout << "Введите "<<i <<"-й элемент: ";
+		cout << "Введите " << i << "-й элемент: ";
 		arr[i] = CIn(-2147483647, 2147483647);
 	}
 
 	stupid(arr, n);
 
 	for (int i = 1; i <= n; i++) {
-		cout << arr[i] << " ";
+		cout << arr[i] << " "; Sleep(2000);
 	}
 	cout << endl;
 	return 0;
@@ -1278,7 +1272,7 @@ string O2() {
 
 	cout << "Введите строку: "; getline(cin, st);
 	cout << endl;
-	cout << "Хотите удалить пробел?\n 1 - да\n 2 - нет\nНомер - "; t = Cin(0,2); cout << endl;
+	cout << "Хотите удалить пробел?\n 1 - да\n 2 - нет\nНомер - "; t = Cin(0, 2); cout << endl;
 	if (t == 1) {
 		for (int i = 0; i <= st.length(); i++) {
 			if (st[i] == ' ') {
@@ -1289,7 +1283,7 @@ string O2() {
 	}
 	else {
 		cout << "Введите символ, который надо удалить: "; cin >> ds; cout << endl;
-		cout << "Сохранить пробел?\n 1 - да\n 2 - нет\nНомер - "; t = Cin(0,2); cout << endl;
+		cout << "Сохранить пробел?\n 1 - да\n 2 - нет\nНомер - "; t = Cin(0, 2); cout << endl;
 		if (t == 1) {
 			for (int i = 0; i <= st.length(); i++) {
 				if (st[i] == ds) {
@@ -1422,7 +1416,7 @@ int spin1() {
 int spin2() {
 	cout << endl;
 	int m;
-	cout << "Введите количество лопастей: "; m = Cin(3, pow(10,9));
+	cout << "Введите количество лопастей: "; m = Cin(3, pow(10, 9));
 
 	if (m != 5) {
 		for (int f = 0; f < 3 && f * 4 <= m; f++) {
@@ -1452,80 +1446,80 @@ int spin3() {
 	return 0;
 }
 int spin4() {
-		cout << endl;
-		char arr[55]; int x, y;
-		//Заполняем массив единицами
-		for (int i = 0; i <= 54; i++) {
-			arr[i] = '1';
+	cout << endl;
+	char arr[55]; int x, y;
+	//Заполняем массив единицами
+	for (int i = 0; i <= 54; i++) {
+		arr[i] = '1';
+	}
+	cout << "Введите количество свободных мест" << endl; x = CIn(-54, 54);//Ввод с учетом нуля
+	for (int i = 0; i < x; i++) {
+		cout << "—— Ввeдите номер свободного места " << endl; y = Cin(-54, 54);
+		//Проверка на ввод одного и того же места
+		if (arr[y] == '0') {
+			cout << "Вы уже вводили номер этого места. Введите корректный номер." << endl;
+			i--;
 		}
-		cout << "Введите количество свободных мест" << endl; x = CIn(-54, 54);//Ввод с учетом нуля
-		for (int i = 0; i < x; i++) {
-			cout << "—— Ввeдите номер свободного места " << endl; y = Cin(-54, 54);
-			//Проверка на ввод одного и того же места
-			if (arr[y] == '0') {
-				cout << "Вы уже вводили номер этого места. Введите корректный номер." << endl;
-				i--;
-			}
-			else {
-				arr[y] = '0';//Если место свободно меняем единицу на ноль 
-			}
+		else {
+			arr[y] = '0';//Если место свободно меняем единицу на ноль 
 		}
+	}
 
-		//Считываем данные из получившегося в итоге массива
-		if ((arr[1] == '0') & (arr[2] == '0') & (arr[3] == '0') & (arr[4] == '0') & (arr[53] == '0') & (arr[54] == '0')) {
-			cout << "Свободно 1-е купе" << endl;
-		}
-		else {
-			cout << "1-е купе не свободно" << endl;
-		}
-		if ((arr[5] == '0') & (arr[6] == '0') & (arr[7] == '0') & (arr[8] == '0') & (arr[52] == '0') & (arr[51] == '0')) {
-			cout << "Свободно 2-е купе" << endl;
-		}
-		else {
-			cout << "2-е купе не свободно" << endl;
-		}
-		if ((arr[12] == '0') & (arr[9] == '0') & (arr[10] == '0') & (arr[11] == '0') & (arr[50] == '0') & (arr[49] == '0')) {
-			cout << "Свободно 3-е купе" << endl;
-		}
-		else {
-			cout << "3-е купе не свободно" << endl;
-		}
-		if ((arr[16] == '0') & (arr[13] == '0') & (arr[14] == '0') & (arr[15] == '0') & (arr[47] == '0') & (arr[48] == '0')) {
-			cout << "Свободно 4-е купе" << endl;
-		}
-		else {
-			cout << "4-е купе не свободно" << endl;
-		}
-		if ((arr[20] == '0') & (arr[17] == '0') & (arr[18] == '0') & (arr[19] == '0') & (arr[46] == '0') & (arr[45] == '0')) {
-			cout << "Свободно 5-е купе" << endl;
-		}
-		else {
-			cout << "5-е купе не свободно" << endl;
-		}
-		if ((arr[24] == '0') & (arr[21] == '0') & (arr[22] == '0') & (arr[23] == '0') & (arr[43] == '0') & (arr[44] == '0')) {
-			cout << "Свободно 6-е купе" << endl;
-		}
-		else {
-			cout << "6-е купе не свободно" << endl;
-		}
-		if ((arr[25] == '0') & (arr[26] == '0') & (arr[27] == '0') & (arr[28] == '0') & (arr[42] == '0') & (arr[41] == '0')) {
-			cout << "Свободно 7-е купе" << endl;
-		}
-		else {
-			cout << "7-е купе не свободно" << endl;
-		}
-		if ((arr[29] == '0') & (arr[30] == '0') & (arr[31] == '0') & (arr[32] == '0') & (arr[39] == '0') & (arr[40] == '0')) {
-			cout << "Свободно 8-е купе" << endl;
-		}
-		else {
-			cout << "8-е купе не свободно" << endl;
-		}
-		if ((arr[33] == '0') & (arr[34] == '0') & (arr[35] == '0') & (arr[36] == '0') & (arr[38] == '0') & (arr[37] == '0')) {
-			cout << "Свободно 9-е купе" << endl;
-		}
-		else {
-			cout << "9-е купе не свободно" << endl;
-		}
+	//Считываем данные из получившегося в итоге массива
+	if ((arr[1] == '0') & (arr[2] == '0') & (arr[3] == '0') & (arr[4] == '0') & (arr[53] == '0') & (arr[54] == '0')) {
+		cout << "Свободно 1-е купе" << endl;
+	}
+	else {
+		cout << "1-е купе не свободно" << endl;
+	}
+	if ((arr[5] == '0') & (arr[6] == '0') & (arr[7] == '0') & (arr[8] == '0') & (arr[52] == '0') & (arr[51] == '0')) {
+		cout << "Свободно 2-е купе" << endl;
+	}
+	else {
+		cout << "2-е купе не свободно" << endl;
+	}
+	if ((arr[12] == '0') & (arr[9] == '0') & (arr[10] == '0') & (arr[11] == '0') & (arr[50] == '0') & (arr[49] == '0')) {
+		cout << "Свободно 3-е купе" << endl;
+	}
+	else {
+		cout << "3-е купе не свободно" << endl;
+	}
+	if ((arr[16] == '0') & (arr[13] == '0') & (arr[14] == '0') & (arr[15] == '0') & (arr[47] == '0') & (arr[48] == '0')) {
+		cout << "Свободно 4-е купе" << endl;
+	}
+	else {
+		cout << "4-е купе не свободно" << endl;
+	}
+	if ((arr[20] == '0') & (arr[17] == '0') & (arr[18] == '0') & (arr[19] == '0') & (arr[46] == '0') & (arr[45] == '0')) {
+		cout << "Свободно 5-е купе" << endl;
+	}
+	else {
+		cout << "5-е купе не свободно" << endl;
+	}
+	if ((arr[24] == '0') & (arr[21] == '0') & (arr[22] == '0') & (arr[23] == '0') & (arr[43] == '0') & (arr[44] == '0')) {
+		cout << "Свободно 6-е купе" << endl;
+	}
+	else {
+		cout << "6-е купе не свободно" << endl;
+	}
+	if ((arr[25] == '0') & (arr[26] == '0') & (arr[27] == '0') & (arr[28] == '0') & (arr[42] == '0') & (arr[41] == '0')) {
+		cout << "Свободно 7-е купе" << endl;
+	}
+	else {
+		cout << "7-е купе не свободно" << endl;
+	}
+	if ((arr[29] == '0') & (arr[30] == '0') & (arr[31] == '0') & (arr[32] == '0') & (arr[39] == '0') & (arr[40] == '0')) {
+		cout << "Свободно 8-е купе" << endl;
+	}
+	else {
+		cout << "8-е купе не свободно" << endl;
+	}
+	if ((arr[33] == '0') & (arr[34] == '0') & (arr[35] == '0') & (arr[36] == '0') & (arr[38] == '0') & (arr[37] == '0')) {
+		cout << "Свободно 9-е купе" << endl;
+	}
+	else {
+		cout << "9-е купе не свободно" << endl;
+	}
 	return 0;
 }
 int spin5() {
@@ -1586,14 +1580,14 @@ void spin() {
 
 int Balls() {
 	cout << endl;
-	cout <<"Введите количество шариков: ";
-	long long n; n = Cin(0,INT_MAX);
+	cout << "Введите количество шариков: ";
+	long long n; n = Cin(0, INT_MAX);
 	long long* k = new long long[n];
 	k[0] = 0; k[1] = 1;
 	for (int i = 2; i <= n; i++) {
 		k[i] = (k[i - 1] + k[i - 2]) * (i - 1);
 	}
-	cout << k[n] << endl;
+	cout << "Количество подходящих вариантов равно "<< k[n] << endl;
 	return 0;
 }
 
@@ -1603,7 +1597,7 @@ int main() {
 	SetConsoleCP(1251);
 	int s;
 	cout << "Главное меню.\nВведите № задания:\n 1 - '1-я неделя'\n 2 - '2-я неделя'\n 3 - '3-я неделя'\n 4 - '4-я неделя'\n 5 - 'Спиннеры'\n 6 - 'Алгоритм Евклида'\n 7 - 'Решето Эратосфена'\n 8 - 'Stupid Sort'\n 9 - 'Задача про Шарики'\n 10 - 'Обработка'\n 0 - Завершение программы\nНомер -  ";
-	s = CIN(0,10);
+	s = CIN(0, 10);
 	switch (s) {
 	case 0:
 		break;

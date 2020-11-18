@@ -1135,6 +1135,26 @@ int week9() {
 		if (number[i] == 'D') in = 13;
 		if (number[i] == 'E') in = 14;
 		if (number[i] == 'F') in = 15;
+		if (number[i] == 'G') in = 16;
+		if (number[i] == 'H') in = 17;
+		if (number[i] == 'I') in = 18;
+		if (number[i] == 'J') in = 19;
+		if (number[i] == 'K') in = 20;
+		if (number[i] == 'L') in = 21;
+		if (number[i] == 'M') in = 22;
+		if (number[i] == 'N') in = 23;
+		if (number[i] == 'O') in = 24;
+		if (number[i] == 'P') in = 25;
+		if (number[i] == 'Q') in = 26;
+		if (number[i] == 'R') in = 27;
+		if (number[i] == 'S') in = 28;
+		if (number[i] == 'T') in = 29;
+		if (number[i] == 'U') in = 30;
+		if (number[i] == 'V') in = 31;
+		if (number[i] == 'W') in = 32;
+		if (number[i] == 'X') in = 33;
+		if (number[i] == 'Y') in = 34;
+		if (number[i] == 'Z') in = 35;
 
 		if (in > flag) flag = in;
 
